@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="pt" class="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LundoIA — IA Angola</title>
+<link rel="shortcut icon" href="lundoia.png" type="image/x-icon">
+<meta name="description" content="LundoIA é a assistente de estudos com inteligência artificial feita para estudantes e universitários angolanos. Respostas precisas, contextualizadas e no currículo de Angola.">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#1a120c">
+<link rel="icon" href="assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/apple-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="app.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/12.0.2/marked.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.1.6/purify.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
+</head>
+<body class="bg-background">
+
+<div class="page">
+
+  <!-- ===== HEADER ===== -->
+  <header class="site-header" id="site-header">
+    <div class="site-header__inner">
+      <a href="#" aria-label="Início LundoIA" class="logo-link">
+        <div class="logo">
+          <span class="logo__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20">
+              <path d="M12 3 3 8l9 5 9-5-9-5Z"/>
+              <path d="M3 8v6l9 5 9-5V8"/>
+            </svg>
+          </span>
+          <span class="logo__text">Lundo<span class="text-primary">IA</span></span>
+        </div>
+      </a>
+
+      <nav class="main-nav" aria-label="Principal">
+        <a href="#funcionalidades">Funcionalidades</a>
+        <a href="#disciplinas">Cursos ou áreas</a>
+        <a href="#como-funciona">Como funciona</a>
+        <a href="#experimentar">Experimentar</a>
+      </nav>
+
+      <div class="header-actions">
+        <a href="entrar.html" class="btn btn--ghost" target="_blank">Entrar</a>
+        <a href="#experimentar" class="btn btn--primary">Começar grátis</a>
+      </div>
+
+      <button type="button" class="menu-toggle" id="menu-toggle" aria-label="Abrir menu" aria-expanded="false">
+        <svg class="icon-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="22" height="22"><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+        <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="22" height="22" hidden><line x1="18" x2="6" y1="6" y2="18"/><line x1="6" x2="18" y1="6" y2="18"/></svg>
+      </button>
+    </div>
+
+    <div class="mobile-nav" id="mobile-nav" hidden>
+      <nav aria-label="Móvel">
+        <a href="#funcionalidades">Funcionalidades</a>
+        <a href="#disciplinas">Cursos ou áreas</a>
+        <a href="#como-funciona">Como funciona</a>
+        <a href="#experimentar">Experimentar</a>
+        <div class="mobile-nav__actions">
+          <a href="entrar.html" class="btn btn--outline btn--full" target="_blank">Entrar</a>
+          <a href="#experimentar" class="btn btn--primary btn--full">Começar grátis</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ===== HERO ===== -->
+    <section class="hero">
+      <div class="hero__glow" aria-hidden="true">
+        <div class="glow glow--1"></div>
+        <div class="glow glow--2"></div>
+      </div>
+
+      <div class="hero__inner container">
+        <div class="hero__content">
+          <span class="badge">
+            <span class="badge__dot"></span>
+            Feita para o contexto angolano
+          </span>
+
+          <h1 class="hero__title">
+            A inteligência artificial que estuda <span class="text-primary">à maneira de Angola</span>
+          </h1>
+
+          <p class="hero__subtitle">
+            A LundoIA contextualiza cada estudante e universitário angolano para
+            dar respostas precisas, no currículo nacional de forma eficiente.
+            Estuda melhor, resolve mais rápido.
+          </p>
+
+          <div class="hero__actions">
+            <a href="#experimentar" class="btn btn--primary btn--lg">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="m12 3-1.9 5.8a2 2 0 0 1-1.287 1.288L3 12l5.8 1.9a2 2 0 0 1 1.288 1.287L12 21l1.9-5.8a2 2 0 0 1 1.287-1.288L21 12l-5.8-1.9a2 2 0 0 1-1.288-1.287Z"/></svg>
+              Experimentar a LundoIA
+            </a>
+            <a href="#como-funciona" class="btn btn--outline btn--lg">Ver como funciona</a>
+          </div>
+
+          <div class="hero__meta">
+            <span class="hero__meta-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16" class="text-primary"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+              Ensino médio &amp; superior
+            </span>
+            <span class="hero__meta-sep"></span>
+            <span>Cursos ou áreas</span>
+          </div>
+        </div>
+
+        <div class="hero__media">
+          <div class="hero__image-frame">
+            <img src="assets/lundoia.png" alt="Ilustração de um livro a transformar-se numa rede neural, representando a LundoIA">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FEATURES ===== -->
+    <section id="funcionalidades" class="section">
+      <div class="container">
+        <div class="section-head">
+          <h2>Tudo o que precisas para estudar melhor</h2>
+          <p>Uma assistente que percebe o teu contexto e te acompanha em cada disciplina.</p>
+        </div>
+
+        <div class="features-grid">
+          <div class="feature-card">
+            <span class="feature-card__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>
+            </span>
+            <h3>Contexto angolano</h3>
+            <p>Respostas alinhadas ao currículo nacional, com exemplos e realidades locais que fazem sentido para ti.</p>
+          </div>
+
+          <div class="feature-card">
+            <span class="feature-card__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719"/><path d="M8 12h.01"/><path d="M12 12h.01"/><path d="M16 12h.01"/></svg>
+            </span>
+            <h3>Explicações passo a passo</h3>
+            <p>Da matemática à história, a LundoIA quebra cada problema em passos simples de acompanhar.</p>
+          </div>
+
+          <div class="feature-card">
+            <span class="feature-card__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="m3 7 3 3 3-3"/><path d="M6 10V5c0-1.7 1.3-3 3-3h1"/><path d="m21 17-3-3-3 3"/><path d="M18 14v5c0 1.7-1.3 3-3 3h-1"/></svg>
+            </span>
+            <h3>Exercícios e preparação</h3>
+            <p>Gera questões de treino e prepara-te para provas, exames de acesso e frequências.</p>
+          </div>
+
+          <div class="feature-card">
+            <span class="feature-card__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="m5 8 6 6"/><path d="m4 14 6-6 2-3"/><path d="M2 5h12"/><path d="M7 2h1"/><path d="m22 22-5-10-5 10"/><path d="M14 18h6"/></svg>
+            </span>
+            <h3>Na tua língua</h3>
+            <p>Comunica em português claro, com abertura a expressões locais para uma aprendizagem natural.</p>
+          </div>
+
+          <div class="feature-card">
+            <span class="feature-card__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M12 21a9 9 0 0 0 9-9H3a9 9 0 0 0 9 9Z"/><path d="M12 3c-1.5 3-2 4.5-2 6a2 2 0 0 0 4 0c0-1.5-.5-3-2-6Z"/></svg>
+            </span>
+            <h3>Do médio ao superior</h3>
+            <p>Do ensino médio à universidade, adapta o nível de detalhe ao teu percurso académico.</p>
+          </div>
+
+          <div class="feature-card">
+            <span class="feature-card__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M12 20h.01"/><path d="M2 8.82a15 15 0 0 1 20 0"/><path d="M5 12.859a10 10 0 0 1 14 0"/><path d="M8.5 16.429a5 5 0 0 1 7 0"/></svg>
+            </span>
+            <h3>Leve e acessível</h3>
+            <p>Pensada para funcionar bem mesmo com ligações mais lentas — estuda em qualquer lugar.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SUBJECTS ===== -->
+    <section id="disciplinas" class="section section--bordered subjects-section">
+      <div class="container">
+        <div class="subjects-grid">
+          <div>
+            <h2>Uma assistente para cursos ou áreas de especialidades</h2>
+            <p class="mt-body">Do ensino médio às licenciaturas, a LundoIA cobre as principais disciplinas do sistema de ensino angolano — e continua a aprender.</p>
+          </div>
+
+          <div class="subjects-list">
+            <span class="subject-chip">Informática</span>
+            <span class="subject-chip">Construção Civil</span>
+            <span class="subject-chip">Redes de Computador</span>
+            <span class="subject-chip">Gestão Empresarial</span>
+            <span class="subject-chip">Contabilidade</span>
+            <span class="subject-chip">Mecânica</span>
+            <span class="subject-chip">Frio e Climatização</span>
+            <span class="subject-chip">Ciências Física e Biológicas</span>
+            <span class="subject-chip">Desenhador Projectista</span>
+            <span class="subject-chip">Economia</span>
+            <span class="subject-chip">Direito</span>
+            <span class="subject-chip">Medicina</span>
+            <span class="subject-chip">Telecomunicação</span>
+            <span class="subject-chip">Electrônica</span>
+            <span class="subject-chip">Programação</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== HOW IT WORKS ===== -->
+    <section id="como-funciona" class="section">
+      <div class="container">
+        <div class="section-head">
+          <h2>Começar é simples</h2>
+          <p>Três passos para transformar a forma como estudas.</p>
+        </div>
+
+        <div class="steps-grid">
+          <div class="step-card">
+            <span class="step-card__number">01</span>
+            <h3>Diz-nos quem és</h3>
+            <p>Indica o teu nível de ensino, curso e província. A LundoIA usa este contexto para personalizar cada resposta.</p>
+          </div>
+          <div class="step-card">
+            <span class="step-card__number">02</span>
+            <h3>Faz a tua pergunta</h3>
+            <p>Escreve a dúvida, cola um enunciado ou pede exercícios. Em português simples, como falarias com um explicador.</p>
+          </div>
+          <div class="step-card">
+            <span class="step-card__number">03</span>
+            <h3>Aprende e evolui</h3>
+            <p>Recebe explicações passo a passo, exemplos locais e treino. Estuda ao teu ritmo, quando e onde quiseres.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== EXPERIMENT / CHAT DEMO ===== -->
+    <section id="experimentar" class="section section--top-bordered experiment-section">
+      <div class="container">
+        <div class="section-head">
+          <h2>Experimenta a LundoIA agora</h2>
+          <p>Faz uma pergunta ou escolhe uma sugestão para veres a assistente em ação de forma geral.</p>
+        </div>
+
+        <div class="chat-wrap">
+          <div class="chat">
+            <div class="chat__header">
+              <div class="logo">
+                <span class="logo__icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20">
+                    <path d="M12 3 3 8l9 5 9-5-9-5Z"/>
+                    <path d="M3 8v6l9 5 9-5V8"/>
+                  </svg>
+                </span>
+                <span class="logo__text">Lundo<span class="text-primary">IA</span></span>
+              </div>
+              <span class="chat__status">
+                <span class="chat__status-dot"></span>
+                Online
+              </span>
+            </div>
+
+            <div class="chat__messages" id="chat-messages">
+              <div class="msg msg--assistant">
+                <div class="msg__bubble">Olá! Sou a LundoIA, a tua assistente de estudos. Pergunta-me sobre qualquer disciplina — do ensino médio ao superior. Como te posso ajudar hoje?</div>
+              </div>
+            </div>
+
+            <div class="chat__suggestions" id="chat-suggestions">
+              <button type="button" class="suggestion-chip">Explica a Guerra Civil Angolana de forma simples</button>
+              <button type="button" class="suggestion-chip">Resolve: 2x + 5 = 17</button>
+              <button type="button" class="suggestion-chip">Como funciona a Sonangol na economia?</button>
+              <button type="button" class="suggestion-chip">Resume o poema "Havemos de Voltar" de Agostinho Neto</button>
+            </div>
+
+            <form class="chat__form" id="chat-form">
+              <div class="chat__input-row">
+                <textarea id="chat-input" rows="1" placeholder="Escreve a tua pergunta..." aria-label="Mensagem para a LundoIA"></textarea>
+                <button type="submit" class="chat__send" id="chat-send" aria-label="Enviar" disabled>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="m5 12 7-7 7 7"/><path d="M12 19V5"/></svg>
+                </button>
+              </div>
+              <p class="chat__disclaimer">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="12" height="12"><path d="m12 3-1.9 5.8a2 2 0 0 1-1.287 1.288L3 12l5.8 1.9a2 2 0 0 1 1.288 1.287L12 21l1.9-5.8a2 2 0 0 1 1.287-1.288L21 12l-5.8-1.9a2 2 0 0 1-1.288-1.287Z"/></svg>
+                Demonstração — as respostas são simuladas
+              </p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CTA ===== -->
+    <section class="section">
+      <div class="container">
+        <div class="cta-card">
+          <div class="cta-card__glow" aria-hidden="true"></div>
+          <h2>Junta-te aos estudantes que já estudam com a LundoIA</h2>
+          <p>Cria a tua conta gratuita e leva a inteligência artificial para os teus estudos, feita à medida de Angola.</p>
+          <div class="cta-card__actions">
+            <a href="#experimentar" class="btn btn--primary btn--lg">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="m12 3-1.9 5.8a2 2 0 0 1-1.287 1.288L3 12l5.8 1.9a2 2 0 0 1 1.288 1.287L12 21l1.9-5.8a2 2 0 0 1 1.287-1.288L21 12l-5.8-1.9a2 2 0 0 1-1.288-1.287Z"/></svg>
+              Começar grátis
+            </a>
+            <button type="button" class="btn btn--outline btn--lg">Falar com a equipa</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="logo">
+            <span class="logo__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20">
+                <path d="M12 3 3 8l9 5 9-5-9-5Z"/>
+                <path d="M3 8v6l9 5 9-5V8"/>
+              </svg>
+            </span>
+            <span class="logo__text">Lundo<span class="text-primary">IA</span></span>
+          </div>
+          <p>A assistente de estudos com inteligência artificial feita para estudantes e universitários angolanos.</p>
+        </div>
+
+        <div class="footer-col">
+          <h3>Links úteis</h3>
+          <ul>
+            <li><a href="#funcionalidades">Funcionalidades</a></li>
+            <li><a href="#disciplinas">Cursos ou áreas</a></li>
+            <li><a href="#como-funciona">Como funciona</a></li>
+            <li><a href="#experimentar">Experimentar</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h3>Recursos</h3>
+          <ul>
+            <li><a href="#">Guia de estudo</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Perguntas frequentes</a></li>
+            <li><a href="#">Suporte</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h3>Sobre</h3>
+          <ul>
+            <li><a href="#">Sobre a LundoIA</a></li>
+            <li><a href="#">Sobre o Desenvolvedor</a></li>
+            <li><a href="#">Contactos</a></li>
+            <li><a href="termos.html">Termos de Uso</a></li>
+            <li><a href="privacidade.html">Privacidade</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© <span id="year"></span> LundoIA. Feito em Angola por Eng. António Lundoloki.</p>
+        <p>Estudar com inteligência, à maneira de casa.</p>
+      </div>
+    </div>
+  </footer>
+
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<script>
+  // Já tens sessão? Não precisas de ver esta página outra vez — exceto se
+  // vieste de um link de recuperação de password (?reset=...), que tem de
+  // continuar a funcionar mesmo com uma sessão antiga guardada no browser.
+  const hasResetToken = new URLSearchParams(window.location.search).has('reset');
+  if (window.localStorage.getItem('lundoia-access-token') && !hasResetToken) {
+    window.location.replace('painel.html');
+  }
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Entrar — LundoIA</title>
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#1a120c">
+<link rel="icon" href="assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/apple-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="app.css">
+<script src="https://accounts.google.com/gsi/client" async defer></script>
+</head>
+<body class="bg-background">
+
+<div class="auth-page">
+
+  <!-- painel de marca -->
+  <div class="auth-panel--brand">
+    <div class="logo">
+      <span class="logo__icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20">
+          <path d="M12 3 3 8l9 5 9-5-9-5Z"/>
+          <path d="M3 8v6l9 5 9-5V8"/>
+        </svg>
+      </span>
+      <span class="logo__text">Lundo<span class="text-primary">IA</span></span>
+    </div>
+
+    <h1 class="auth-panel__title">A tua tutora de IA, pronta a ajudar-te a qualquer hora.</h1>
+    <p class="auth-panel__subtitle">Junta-te a milhares de estudantes angolanos que já estudam de forma mais inteligente.</p>
+
+    <ul class="auth-checklist">
+      <li><span class="check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="13" height="13"><polyline points="20 6 9 17 4 12"/></svg></span>Explicações passo-a-passo</li>
+      <li><span class="check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="13" height="13"><polyline points="20 6 9 17 4 12"/></svg></span>Módulos por curso</li>
+      <li><span class="check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="13" height="13"><polyline points="20 6 9 17 4 12"/></svg></span>Biblioteca académica</li>
+      <li><span class="check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="13" height="13"><polyline points="20 6 9 17 4 12"/></svg></span>Em português de Angola</li>
+    </ul>
+  </div>
+
+  <!-- painel do formulário -->
+  <div class="auth-panel--form">
+    <div class="auth-form-card">
+      <div class="logo">
+        <span class="logo__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20">
+            <path d="M12 3 3 8l9 5 9-5-9-5Z"/>
+            <path d="M3 8v6l9 5 9-5V8"/>
+          </svg>
+        </span>
+        <span class="logo__text">Lundo<span class="text-primary">IA</span></span>
+      </div>
+
+      <!-- alternador Entrar / Criar conta (troca de área, mesma página) -->
+      <div class="auth-tabs" role="tablist" aria-label="Alternar entre entrar e criar conta">
+        <button type="button" class="auth-tabs__btn is-active" role="tab" aria-selected="true" data-auth-tab="entrar">Entrar</button>
+        <button type="button" class="auth-tabs__btn" role="tab" aria-selected="false" data-auth-tab="criar">Criar conta</button>
+      </div>
+
+      <!-- ===================== ÁREA: ENTRAR ===================== -->
+      <div class="auth-mode" data-auth-panel="entrar">
+        <h1>Bem-vindo de volta</h1>
+        <p>Entra para continuar a estudar.</p>
+
+        <div class="google-btn-slot" data-google-slot>
+          <button type="button" class="btn--google">
+          <svg width="18" height="18" viewBox="0 0 24 24">
+            <path fill="#4285F4" d="M23.52 12.27c0-.85-.07-1.47-.22-2.12H12v3.85h6.6c-.13 1.1-.85 2.77-2.45 3.89l-.02.15 3.56 2.76.25.02c2.26-2.09 3.58-5.17 3.58-8.55Z"/>
+            <path fill="#34A853" d="M12 23.5c3.24 0 5.96-1.07 7.94-2.9l-3.78-2.93c-1.01.7-2.37 1.19-4.16 1.19-3.18 0-5.87-2.1-6.83-5H1.27v2.98A11.5 11.5 0 0 0 12 23.5Z"/>
+            <path fill="#FBBC05" d="M5.17 13.86A6.98 6.98 0 0 1 4.8 12c0-.65.11-1.28.35-1.86V7.16H1.27A11.5 11.5 0 0 0 .5 12c0 1.86.45 3.62 1.27 5.16l3.4-2.65v-.65Z"/>
+            <path fill="#EA4335" d="M12 4.75c2.26 0 3.79.98 4.66 1.8l3.4-3.32C17.94 1.4 15.24.5 12 .5A11.5 11.5 0 0 0 1.27 7.16l3.9 3.02c.96-2.9 3.65-5 6.83-5Z"/>
+          </svg>
+          Continuar com Google
+          </button>
+        </div>
+
+        <div class="divider">ou</div>
+
+        <form id="login-form" novalidate>
+          <div class="field">
+            <label for="login-email">Email</label>
+            <input type="email" id="login-email" name="email" placeholder="tu@exemplo.ao" required>
+          </div>
+          <div class="field">
+            <div class="field__label-row">
+              <label for="login-password">Palavra-passe</label>
+              <a href="#" id="forgot-password-link" class="field__hint-link">Esqueceste a password?</a>
+            </div>
+            <input type="password" id="login-password" name="password" placeholder="••••••••" required minlength="6">
+          </div>
+
+          <button type="submit" class="btn--gradient">Entrar</button>
+          <p class="form-note" aria-live="polite"></p>
+        </form>
+
+        <p class="auth-footer-link">Ainda não tens conta? <a href="#" data-auth-tab="criar">Regista-te</a></p>
+      </div>
+
+      <!-- ===================== ÁREA: CRIAR CONTA ===================== -->
+      <div class="auth-mode" data-auth-panel="criar" hidden>
+        <h1>Cria a tua conta</h1>
+        <p>Estuda de forma mais inteligente.</p>
+
+        <div class="google-btn-slot" data-google-slot>
+          <button type="button" class="btn--google">
+          <svg width="18" height="18" viewBox="0 0 24 24">
+            <path fill="#4285F4" d="M23.52 12.27c0-.85-.07-1.47-.22-2.12H12v3.85h6.6c-.13 1.1-.85 2.77-2.45 3.89l-.02.15 3.56 2.76.25.02c2.26-2.09 3.58-5.17 3.58-8.55Z"/>
+            <path fill="#34A853" d="M12 23.5c3.24 0 5.96-1.07 7.94-2.9l-3.78-2.93c-1.01.7-2.37 1.19-4.16 1.19-3.18 0-5.87-2.1-6.83-5H1.27v2.98A11.5 11.5 0 0 0 12 23.5Z"/>
+            <path fill="#FBBC05" d="M5.17 13.86A6.98 6.98 0 0 1 4.8 12c0-.65.11-1.28.35-1.86V7.16H1.27A11.5 11.5 0 0 0 .5 12c0 1.86.45 3.62 1.27 5.16l3.4-2.65v-.65Z"/>
+            <path fill="#EA4335" d="M12 4.75c2.26 0 3.79.98 4.66 1.8l3.4-3.32C17.94 1.4 15.24.5 12 .5A11.5 11.5 0 0 0 1.27 7.16l3.9 3.02c.96-2.9 3.65-5 6.83-5Z"/>
+          </svg>
+          Continuar com Google
+          </button>
+        </div>
+
+        <div class="divider">ou</div>
+
+        <form id="signup-form" novalidate>
+          <div class="field">
+            <label for="signup-name">Nome completo</label>
+            <input type="text" id="signup-name" name="name" placeholder="João Domingos" required>
+          </div>
+          <div class="field">
+            <label for="signup-email">Email</label>
+            <input type="email" id="signup-email" name="email" placeholder="tu@exemplo.ao" required>
+          </div>
+          <div class="field">
+            <label for="signup-password">Palavra-passe</label>
+            <input type="password" id="signup-password" name="password" placeholder="••••••••" required minlength="8">
+          </div>
+
+          <button type="submit" class="btn--gradient">Criar conta</button>
+          <p class="form-note" aria-live="polite"></p>
+        </form>
+
+        <p class="auth-footer-link">Já tens conta? <a href="#" data-auth-tab="entrar">Entrar</a></p>
+      </div>
+
+      <!-- ===================== ÁREA: RECUPERAR PASSWORD ===================== -->
+      <div class="auth-mode" data-auth-panel="recuperar" hidden>
+        <h1>Recuperar password</h1>
+        <p>Escreve o teu email e enviamos-te um link para definires uma nova palavra-passe.</p>
+
+        <form id="forgot-password-form" novalidate>
+          <div class="field">
+            <label for="forgot-email">Email</label>
+            <input type="email" id="forgot-email" name="email" placeholder="tu@exemplo.ao" required>
+          </div>
+
+          <button type="submit" class="btn--gradient">Enviar link de recuperação</button>
+          <p class="form-note" aria-live="polite"></p>
+        </form>
+
+        <p class="auth-footer-link">Afinal já sabes a password? <a href="#" data-auth-tab="entrar">Entrar</a></p>
+      </div>
+
+      <!-- ===================== ÁREA: DEFINIR NOVA PASSWORD ===================== -->
+      <div class="auth-mode" data-auth-panel="nova-password" hidden>
+        <h1>Definir nova password</h1>
+        <p>Escolhe uma palavra-passe nova para a tua conta.</p>
+
+        <form id="reset-password-form" novalidate>
+          <div class="field">
+            <label for="reset-password-input">Nova palavra-passe</label>
+            <input type="password" id="reset-password-input" name="password" placeholder="••••••••" required minlength="8">
+          </div>
+
+          <button type="submit" class="btn--gradient">Guardar nova password</button>
+          <p class="form-note" aria-live="polite"></p>
+        </form>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

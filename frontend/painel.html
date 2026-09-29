@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<script>
+  // Guarda de autenticação: sem sessão válida, nem chega a mostrar o painel.
+  if (!window.localStorage.getItem('lundoia-access-token')) {
+    window.location.replace('entrar.html');
+  }
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LundoIA</title>
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#1a120c">
+<link rel="icon" href="assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/apple-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="app.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/12.0.2/marked.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.1.6/purify.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
+</head>
+<body class="bg-background">
+
+<div class="app-shell">
+
+  <!-- ===== SIDEBAR ===== -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar__brand">
+      <span class="logo__icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20">
+          <path d="M12 3 3 8l9 5 9-5-9-5Z"/>
+          <path d="M3 8v6l9 5 9-5V8"/>
+        </svg>
+      </span>
+      <span class="sidebar__brand-text">
+        <span class="sidebar__brand-title">Lundo<span class="text-primary">IA</span></span>
+        <span class="sidebar__brand-sub">Estuda com IA</span>
+      </span>
+    </div>
+
+    <nav class="sidebar__nav" aria-label="Principal">
+      <a href="#painel" class="nav-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9" rx="1"/><rect x="14" y="3" width="7" height="5" rx="1"/><rect x="14" y="12" width="7" height="9" rx="1"/><rect x="3" y="16" width="7" height="5" rx="1"/></svg>
+        Painel <span class="nav-dot"></span>
+      </a>
+      <a href="#chat" class="nav-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        Chat IA
+      </a>
+      <a href="#modulos" class="nav-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 7v14"/><path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg>
+        Módulos
+      </a>
+      <a href="#biblioteca" class="nav-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m16 6 4 14"/><path d="M12 6v14"/><path d="M8 8v12"/><path d="M4 4v16"/></svg>
+        Biblioteca
+      </a>
+      <a href="#historico" class="nav-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 2.64-6.36L3 8"/><path d="M3 3v5h5"/><path d="M12 7v5l4 2"/></svg>
+        Histórico
+      </a>
+      <a href="#perfil" class="nav-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="5"/><path d="M20 21a8 8 0 0 0-16 0"/></svg>
+        Perfil
+      </a>
+      <a href="#definicoes" class="nav-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg>
+        Definições
+      </a>
+    </nav>
+
+    <div class="sidebar__footer">
+      <div class="sidebar__actions">
+        <button type="button" class="icon-btn" id="theme-toggle" aria-label="Alternar tema" aria-pressed="true">
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16" hidden><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+        </button>
+        <a href="entrar.html" class="icon-btn" aria-label="Terminar sessão">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" x2="9" y1="12" y2="12"/></svg>
+        </a>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+  <!-- ===== MAIN ===== -->
+  <main class="main">
+    <div class="topbar-mobile">
+      <button type="button" class="icon-btn" id="sidebar-toggle" aria-label="Abrir menu" style="flex:none;width:2.25rem;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+      </button>
+      <div class="logo">
+        <span class="logo__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><path d="M12 3 3 8l9 5 9-5-9-5Z"/><path d="M3 8v6l9 5 9-5V8"/></svg>
+        </span>
+        <span class="logo__text">Lundo<span class="text-primary">IA</span></span>
+      </div>
+      <span style="width:2.25rem"></span>
+    </div>
+
+    <!-- ===================== VIEW: PAINEL ===================== -->
+    <section class="view is-active" data-view="painel">
+      <p style="color:var(--muted-foreground); font-size:0.9rem;" id="painel-greeting">Bem-vindo de volta 👋</p>
+      <div class="page-head" style="margin-top:0.25rem;">
+        <h1>O que vamos estudar hoje?</h1>
+      </div>
+
+      <div class="hero-card">
+        <span class="hero-card__badge">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="13" height="13"><path d="m12 3-1.9 5.8a2 2 0 0 1-1.287 1.288L3 12l5.8 1.9a2 2 0 0 1 1.288 1.287L12 21l1.9-5.8a2 2 0 0 1 1.287-1.288L21 12l-5.8-1.9a2 2 0 0 1-1.288-1.287Z"/></svg>
+          IA sempre pronta
+        </span>
+        <h2>Faz uma pergunta agora</h2>
+        <p>Explica-te matérias, resolve exercícios, cria resumos.</p>
+        <a href="#chat" class="btn btn--primary">
+          Abrir chat
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </a>
+      </div>
+
+      <div class="stats-grid">
+        <div class="stat-card">
+          <span class="stat-card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>
+          </span>
+          <div>
+            <div class="stat-card__value">7</div>
+            <div class="stat-card__label">dias de estudo</div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <span class="stat-card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+          </span>
+          <div>
+            <div class="stat-card__value">24</div>
+            <div class="stat-card__label">conversas este mês</div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <span class="stat-card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><path d="M12 7v14"/><path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg>
+          </span>
+          <div>
+            <div class="stat-card__value" id="stat-modulos-activos">5</div>
+            <div class="stat-card__label">módulos activos</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="dash-grid">
+        <div class="panel-card">
+          <h3 id="continue-module-title">Continua o módulo</h3>
+          <p id="continue-module-name">Cálculo I — Limites e continuidade</p>
+          <div class="progress-bar"><div class="progress-bar__fill" id="continue-module-fill" style="width:65%"></div></div>
+          <div class="progress-label" id="continue-module-label">Progresso 65%</div>
+        </div>
+        <div class="panel-card">
+          <h3>Biblioteca</h3>
+          <p id="painel-library-text">180+ livros e sebentas para o teu curso</p>
+          <a href="#biblioteca" class="explore-link">
+            Explorar
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== VIEW: CHAT ===================== -->
+    <section class="view" data-view="chat" hidden>
+      <div class="chat-page">
+        <div class="chat-page__header">
+          <h1>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><path d="M12 3 3 8l9 5 9-5-9-5Z"/><path d="M3 8v6l9 5 9-5V8"/></svg>
+            Chat com LundoIA
+          </h1>
+          <button type="button" class="chat-page__new" id="chat-new-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+            Nova conversa
+          </button>
+        </div>
+
+        <div class="chat-page__body">
+          <div class="chat-empty" id="chat-empty">
+            <span class="chat-empty__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="26" height="26"><path d="M12 3 3 8l9 5 9-5-9-5Z"/><path d="M3 8v6l9 5 9-5V8"/></svg>
+            </span>
+            <h2>Como posso ajudar-te hoje?</h2>
+            <p>Faz uma pergunta ou escolhe uma sugestão.</p>
+
+            <div class="chat-empty__suggestions">
+              <button type="button" data-suggestion>Explica-me o teorema de Bayes com um exemplo simples</button>
+              <button type="button" data-suggestion>Resume o Estado angolano segundo a Constituição</button>
+              <button type="button" data-suggestion>Cria um plano de estudo de 7 dias para Cálculo I</button>
+              <button type="button" data-suggestion>O que é a segunda lei de Newton?</button>
+            </div>
+          </div>
+
+          <div class="chat-page__messages" id="chat-messages-full" hidden></div>
+        </div>
+
+        <form class="chat-page__form" id="chat-form-full">
+          <div class="chat-attachments" id="chat-attachments" hidden></div>
+          <div class="chat-page__input-row">
+            <button type="button" class="chat-page__attach" id="chat-attach-btn" aria-label="Anexar imagem ou documento" title="Anexar imagem ou documento">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><path d="m21.44 11.05-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"/></svg>
+            </button>
+            <input type="file" id="chat-file-input" accept="image/*,.pdf,.doc,.docx,.txt,.zip,.csv,.md,.json" multiple hidden>
+            <textarea id="chat-input-full" rows="1" placeholder="Pergunta à LundoIA..." aria-label="Mensagem para a LundoIA"></textarea>
+            <button type="submit" class="chat-page__send" id="chat-send-full" aria-label="Enviar" disabled>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="m5 12 7-7 7 7"/><path d="M12 19V5"/></svg>
+            </button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- ===================== VIEW: MÓDULOS ===================== -->
+    <section class="view" data-view="modulos" hidden>
+      <div class="page-head">
+        <h1>Os teus módulos</h1>
+        <p id="modules-subtitle">Trilhos de estudo com exercícios, quizzes e revisões espaçadas.</p>
+      </div>
+
+      <div class="module-list" id="modules-list">
+        <!-- Preenchido dinamicamente via app.js a partir dos módulos ativos do utilizador -->
+      </div>
+
+      <p class="modules-empty" id="modules-empty" hidden>
+        Ainda não tens nenhum módulo ativo. Adiciona um abaixo para começares.
+      </p>
+
+      <div class="modules-add">
+        <button type="button" class="modules-add__btn" id="modules-add-toggle">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+          Adicionar módulo
+        </button>
+
+        <div class="modules-add__panel" id="modules-add-panel" hidden>
+          <select id="modules-add-select" aria-label="Escolhe um módulo para adicionar"></select>
+          <button type="button" class="btn btn--primary" id="modules-add-confirm">Adicionar</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== VIEW: BIBLIOTECA ===================== -->
+    <section class="view" data-view="biblioteca" hidden>
+      <div class="page-head">
+        <h1>Biblioteca</h1>
+        <p id="library-subtitle">Livros, sebentas e artigos organizados por área.</p>
+      </div>
+
+      <div class="library-toolbar">
+        <div class="search-bar">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+          <input type="search" id="library-search" placeholder="Procurar por título ou área..." aria-label="Procurar na biblioteca">
+        </div>
+      </div>
+
+      <p class="library-empty" id="library-empty" hidden>Nenhum recurso encontrado para esta pesquisa.</p>
+
+      <div class="library-grid" id="library-grid"></div>
+    </section>
+
+    <!-- ===================== VIEW: HISTÓRICO ===================== -->
+    <section class="view" data-view="historico" hidden>
+      <div class="page-head">
+        <h1>Histórico</h1>
+        <p>As tuas conversas e a tua atividade de estudo recente na LundoIA.</p>
+      </div>
+
+      <h2 class="history-section-title">Conversas</h2>
+      <p class="history-empty" id="conversations-empty" hidden>Ainda não tens nenhuma conversa — fala com a LundoIA no Chat.</p>
+      <div class="conversations-list" id="conversations-list"></div>
+
+      <h2 class="history-section-title">Atividade de estudo</h2>
+      <p class="history-empty" id="history-empty" hidden>Ainda não tens atividade — assim que começares a estudar um módulo, aparece aqui.</p>
+      <div class="history-list" id="history-list"></div>
+    </section>
+
+    <!-- ===================== VIEW: PERFIL ===================== -->
+    <section class="view" data-view="perfil" hidden>
+      <div class="page-head">
+        <h1>Perfil</h1>
+        <p>Personaliza a tua experiência com a LundoIA.</p>
+      </div>
+
+      <div class="profile-head">
+        <span class="profile-avatar">A</span>
+        <div>
+          <h2>António Lundoloki</h2>
+          <p>antoniolundoloki801@gmail.com</p>
+        </div>
+      </div>
+
+      <form class="profile-form" id="profile-form" novalidate>
+        <div class="field">
+          <label for="profile-name">Nome completo</label>
+          <input type="text" id="profile-name" name="name" value="António Lundoloki">
+        </div>
+        <div class="field">
+          <label for="profile-university">Universidade</label>
+          <input type="text" id="profile-university" name="university" placeholder="Ex: Agostinho Neto">
+        </div>
+        <div class="field">
+          <label for="profile-course">Curso</label>
+          <input type="text" id="profile-course" name="course" value="Informática">
+        </div>
+        <div class="field">
+          <label for="profile-year">Ano</label>
+          <input type="text" id="profile-year" name="year" placeholder="Ex: 2º ano">
+        </div>
+
+        <button type="submit" class="btn btn--primary" style="margin-top:1.5rem;">Guardar alterações</button>
+        <p class="form-note" aria-live="polite"></p>
+      </form>
+    </section>
+
+    <!-- ===================== VIEW: DEFINIÇÕES ===================== -->
+    <section class="view" data-view="definicoes" hidden>
+      <div class="page-head">
+        <h1>Definições</h1>
+        <p>Ajusta a LundoIA ao teu gosto.</p>
+      </div>
+
+      <div class="settings-section">
+        <h2>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+          Aparência
+        </h2>
+        <div class="settings-row">
+          <div class="settings-row__label">
+            <strong>Modo escuro</strong>
+            <span>Interface com fundo escuro (recomendado à noite).</span>
+          </div>
+          <label class="switch">
+            <input type="checkbox" id="settings-dark-mode" checked>
+            <span class="slider"></span>
+          </label>
+        </div>
+      </div>
+
+      <div class="settings-section">
+        <h2>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M10.268 21a2 2 0 0 0 3.464 0"/><path d="M3.262 15.326A1 1 0 0 0 4 17h16a1 1 0 0 0 .74-1.673C19.41 13.956 18 12.499 18 8A6 6 0 0 0 6 8c0 4.499-1.411 5.956-2.738 7.326"/></svg>
+          Notificações
+        </h2>
+        <div class="settings-row">
+          <div class="settings-row__label">
+            <strong>Lembretes de estudo</strong>
+            <span>Recebe lembretes diários para manteres a rotina.</span>
+          </div>
+          <label class="switch">
+            <input type="checkbox" id="settings-study-reminders" checked>
+            <span class="slider"></span>
+          </label>
+        </div>
+        <div class="settings-row">
+          <div class="settings-row__label">
+            <strong>Novidades da plataforma</strong>
+            <span>Fica a par de novos módulos e recursos.</span>
+          </div>
+          <label class="switch">
+            <input type="checkbox" id="settings-platform-news">
+            <span class="slider"></span>
+          </label>
+        </div>
+      </div>
+
+      <div class="settings-section">
+        <h2>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/></svg>
+          Privacidade
+        </h2>
+        <div class="settings-row">
+          <div class="settings-row__label">
+            <strong>Histórico de chat</strong>
+            <span>Guardar conversas para consultar depois.</span>
+          </div>
+          <label class="switch">
+            <input type="checkbox" id="settings-save-chat-history" checked>
+            <span class="slider"></span>
+          </label>
+        </div>
+        <p class="form-note" id="settings-note" aria-live="polite" style="text-align:left; margin-top:0.75rem;"></p>
+      </div>
+
+      <div class="settings-section">
+        <h2>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" x2="9" y1="12" y2="12"/></svg>
+          Conta
+        </h2>
+        <div class="settings-row">
+          <div class="settings-row__label">
+            <span>Termina a sessão nesta conta de demonstração.</span>
+          </div>
+          <a href="entrar.html" class="btn--danger" style="display:inline-flex;align-items:center;">Terminar sessão</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+</div>
+
+<!-- ===================== ONBOARDING (primeira vez) ===================== -->
+<div class="onboarding-overlay" id="onboarding-overlay" hidden>
+  <div class="onboarding-card">
+
+    <div class="onboarding-progress" id="onboarding-progress" aria-hidden="true">
+      <span class="onboarding-progress__dot is-active" data-dot="1"></span>
+      <span class="onboarding-progress__dot" data-dot="2"></span>
+      <span class="onboarding-progress__dot" data-dot="3"></span>
+      <span class="onboarding-progress__dot" data-dot="4"></span>
+    </div>
+
+    <!-- Tela 1 — Quem és tu -->
+    <section class="onboarding-step" data-step="1">
+      <span class="onboarding-step__kicker">Passo 1 de 4</span>
+      <h2>Quem és tu?</h2>
+      <p>Para personalizar a tua experiência de aprendizagem.</p>
+
+      <div class="onboarding-options">
+        <button type="button" class="onboarding-option" data-level="medio">
+          <span class="onboarding-option__emoji" aria-hidden="true">📚</span>
+          <span class="onboarding-option__label">Estudante do Ensino Médio</span>
+        </button>
+        <button type="button" class="onboarding-option" data-level="universitario">
+          <span class="onboarding-option__emoji" aria-hidden="true">🎓</span>
+          <span class="onboarding-option__label">Estudante Universitário</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- Tela 2 — Informações académicas -->
+    <section class="onboarding-step" data-step="2" hidden>
+      <span class="onboarding-step__kicker">Passo 2 de 4</span>
+      <h2>Informações académicas</h2>
+      <p>Conta-nos um pouco mais sobre o teu percurso.</p>
+
+      <form class="onboarding-fields" id="onboarding-fields-medio" novalidate hidden>
+        <div class="field">
+          <label for="onboarding-escola">Escola</label>
+          <input type="text" id="onboarding-escola" name="escola" placeholder="Ex: Liceu Nacional">
+        </div>
+        <div class="field">
+          <label for="onboarding-curso-medio">Curso</label>
+          <input type="text" id="onboarding-curso-medio" name="curso" placeholder="Ex: Informática">
+        </div>
+        <div class="field">
+          <label for="onboarding-classe">Classe</label>
+          <select id="onboarding-classe" name="classe">
+            <option value="" disabled selected>Escolhe a tua classe</option>
+            <option value="10ª">10ª classe</option>
+            <option value="11ª">11ª classe</option>
+            <option value="12ª">12ª classe</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="onboarding-area">Área</label>
+          <select id="onboarding-area" name="area">
+            <option value="" disabled selected>Escolhe a tua área</option>
+            <option value="Informática">Informática</option>
+            <option value="Construção Civil">Construção Civil</option>
+            <option value="Eletricidade">Eletricidade</option>
+            <option value="Mecânica">Mecânica</option>
+            <option value="Contabilidade">Contabilidade</option>
+            <option value="Química Industrial">Química Industrial</option>
+            <option value="Outra">Outra</option>
+          </select>
+        </div>
+      </form>
+
+      <form class="onboarding-fields" id="onboarding-fields-universitario" novalidate hidden>
+        <div class="field">
+          <label for="onboarding-universidade">Universidade</label>
+          <input type="text" id="onboarding-universidade" name="universidade" placeholder="Ex: Agostinho Neto">
+        </div>
+        <div class="field">
+          <label for="onboarding-curso-uni">Curso</label>
+          <input type="text" id="onboarding-curso-uni" name="curso" placeholder="Ex: Engenharia Informática">
+        </div>
+        <div class="field">
+          <label for="onboarding-ano">Ano</label>
+          <select id="onboarding-ano" name="ano">
+            <option value="" disabled selected>Escolhe o teu ano</option>
+            <option value="1º ano">1º ano</option>
+            <option value="2º ano">2º ano</option>
+            <option value="3º ano">3º ano</option>
+            <option value="4º ano">4º ano</option>
+            <option value="5º ano">5º ano</option>
+          </select>
+        </div>
+      </form>
+
+      <div class="onboarding-nav">
+        <button type="button" class="onboarding-btn-back" data-onboarding-back>Voltar</button>
+        <button type="button" class="btn btn--primary" id="onboarding-step2-next" data-onboarding-next disabled>
+          Continuar
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </button>
+      </div>
+    </section>
+
+    <!-- Tela 3 — Módulos -->
+    <section class="onboarding-step" data-step="3" hidden>
+      <span class="onboarding-step__kicker">Passo 3 de 4</span>
+      <h2>Escolhe os teus módulos</h2>
+      <p>Ativa ou desativa conforme o teu interesse — podes mudar isto depois em Definições.</p>
+
+      <div class="onboarding-modules" id="onboarding-modules"></div>
+
+      <div class="onboarding-nav">
+        <button type="button" class="onboarding-btn-back" data-onboarding-back>Voltar</button>
+        <button type="button" class="btn btn--primary" data-onboarding-next>
+          Continuar
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </button>
+      </div>
+    </section>
+
+    <!-- Tela 4 — A configurar -->
+    <section class="onboarding-step onboarding-step--loading" data-step="4" hidden>
+      <span class="onboarding-loading__icon" aria-hidden="true">🧠</span>
+      <h2>A configurar a tua IA...</h2>
+
+      <ul class="onboarding-checklist" id="onboarding-checklist">
+        <li data-checklist-item>Carregando o curso</li>
+        <li data-checklist-item>Ativando módulos</li>
+        <li data-checklist-item>Preparando materiais</li>
+        <li data-checklist-item>Tudo pronto!</li>
+      </ul>
+    </section>
+
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
