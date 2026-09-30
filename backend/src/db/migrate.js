@@ -5,12 +5,15 @@ const mysql = require('mysql2/promise');
 
 async function migrate() {
   const connection = await mysql.createConnection({
-    host: process.env.DB_HOST,
-    port: Number(process.env.DB_PORT || 3306),
-    user: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
-    multipleStatements: true,
-  });
+  host: process.env.DB_HOST,
+  port: Number(process.env.DB_PORT || 3306),
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  ssl: {
+    rejectUnauthorized: false
+  },
+  multipleStatements: true,
+});
 
   try {
     const dbName = process.env.DB_NAME;
