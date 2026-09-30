@@ -5,7 +5,7 @@
 // Liga-se à backend em API_BASE_URL (ver src/server.js no projeto da API).
 // ============================================================================
 
-const API_BASE_URL = 'http://localhost:3000/api';
+const API_BASE_URL = 'https://lundoia-backend.onrender.com/api';
 
 // Client ID do Google Cloud Console (Credentials → OAuth 2.0 Client ID → tipo
 // "Web application"). Sem isto preenchido, os botões "Continuar com Google"
