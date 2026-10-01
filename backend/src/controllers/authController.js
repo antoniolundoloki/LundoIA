@@ -34,10 +34,9 @@ async function register(req, res, next) {
     }
 
     const passwordHash = await hashPassword(password);
-
     const [result] = await pool.query(
-      'INSERT INTO users (name, email, password_hash, auth_provider) VALUES (:name, :email, :passwordHash, "local")',
-      { name, email, passwordHash }
+      'INSERT INTO users (name, email, password_hash, auth_provider) VALUES (:name, :email, :passwordHash, :authProvider)',
+      { name, email, passwordHash, authProvider: 'local' }
     );
 
     await pool.query('INSERT INTO user_settings (user_id) VALUES (:userId)', { userId: result.insertId });
