@@ -1,28 +1,11 @@
-// ============================================================================
-// LundoIA — serviço de email (Nodemailer / Gmail SMTP).
-//
-// Se SMTP_USER/SMTP_PASSWORD não estiverem configurados no .env, não tenta
-// enviar (isso rebentaria) — em vez disso regista no log o que teria
-// enviado. Assim o registo de conta nunca falha por causa do email.
-// ============================================================================
-
 const path = require('path');
-const nodemailer = require('nodemailer');
+const { Resend } = require('resend');
 
-const isConfigured = Boolean(process.env.SMTP_USER && process.env.SMTP_PASSWORD);
-const port = Number(process.env.SMTP_PORT) || 465;
+const resend = new Resend(process.env.RESEND_API_KEY);
+
 const BRAND_GOLD = '#D97706';
 const LOGO_PATH = path.join(__dirname, '..', 'assets', 'logo.png');
 const LOGO_CID = 'lundoia-logo';
-
-const transporter = isConfigured
-  ? nodemailer.createTransport({
-      host: process.env.SMTP_HOST || 'smtp.gmail.com',
-      port,
-      secure: port === 465,
-      auth: { user: process.env.SMTP_USER, pass: process.env.SMTP_PASSWORD },
-    })
-  : null;
 
 // Moldura visual partilhada por todos os emails: logo + "LundoIA" a dourado
 // no topo, o conteúdo específico de cada email no meio, assinatura no fim.
@@ -54,14 +37,9 @@ function renderEmailShell({ title, bodyHtml }) {
 async function send({ to, subject, title, bodyHtml }) {
   const html = renderEmailShell({ title, bodyHtml });
 
-  if (!transporter) {
-    console.log('[email simulado — SMTP não configurado] Para: %s | Assunto: %s', to, subject);
-    return { simulated: true };
-  }
-
   try {
-    await transporter.sendMail({
-      from: process.env.SMTP_FROM || '"LundoIA" <no-reply@lundoia.ao>',
+    const { data, error } = await resend.emails.send({
+      from: process.env.RESEND_FROM || 'LundoIA <onboarding@resend.dev>',
       to,
       subject,
       html,
@@ -69,14 +47,19 @@ async function send({ to, subject, title, bodyHtml }) {
         {
           filename: 'lundoia-logo.png',
           path: LOGO_PATH,
-          cid: LOGO_CID,
+          contentId: LOGO_CID,
         },
       ],
     });
-    return { simulated: false };
+
+    if (error) {
+      console.error('Falha ao enviar email para %s:', to, error);
+      return { simulated: false, error: true };
+    }
+
+    console.log('Email enviado com sucesso para %s. ID: %s', to, data?.id);
+    return { simulated: false, error: false };
   } catch (err) {
-    // Um email falhado nunca deve rebentar o pedido que o despoletou (ex.:
-    // registo de conta) — só regista o erro para investigação.
     console.error('Falha ao enviar email para %s:', to, err.message);
     return { simulated: false, error: true };
   }
