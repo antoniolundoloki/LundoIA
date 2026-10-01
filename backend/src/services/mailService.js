@@ -8,7 +8,8 @@ const LOGO_PATH = path.join(__dirname, '..', 'assets', 'logo.png');
 const LOGO_CID = 'lundoia-logo';
 
 // Moldura visual partilhada por todos os emails: logo + "LundoIA" a dourado
-// no topo, o conteúdo específico de cada email no meio, assinatura no fim.
+
+
 function renderEmailShell({ title, bodyHtml }) {
   return `
   <body style="margin:0; padding:0; background:#f4f1ec;">
