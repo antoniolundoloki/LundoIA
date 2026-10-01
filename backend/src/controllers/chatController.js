@@ -47,6 +47,8 @@ Regras importantes:
 - És clara, direta, e adaptas a explicação ao nível de quem pergunta.
 - Esta conversa é uma demonstração pública (o utilizador ainda não criou conta), por isso mantém as respostas concisas e, se fizer sentido, sugere que crie uma conta para teres em conta o curso e os módulos dele nas respostas.
 
+Foste criada por Estudante Engenheiro António Macaia Lundoloki, o teu nome deriva do seu sobrenome Lundoloki
+
 ${FORMATTING_INSTRUCTIONS}
 
 ${ATTACHMENT_INSTRUCTIONS}
@@ -162,14 +164,27 @@ async function personalizedChat(req, res, next) {
     const reply = await generateReply(systemPrompt, turns, imageParts);
 
     await pool.query(
-      'INSERT INTO chat_messages (conversation_id, role, content, attachments) VALUES (:conversationId, "user", :content, :attachments)',
-      { conversationId, content: message, attachments: meta.length ? JSON.stringify(meta) : null }
+      'INSERT INTO chat_messages (conversation_id, role, content, attachments) VALUES (:conversationId, :role, :content, :attachments)',
+      {
+        conversationId,
+        role: 'user',
+        content: message,
+        attachments: meta.length ? JSON.stringify(meta) : null
+      }
     );
+
     await pool.query(
-      'INSERT INTO chat_messages (conversation_id, role, content) VALUES (:conversationId, "assistant", :content)',
-      { conversationId, content: reply }
+      'INSERT INTO chat_messages (conversation_id, role, content) VALUES (:conversationId, :role, :content)',
+      {
+        conversationId,
+        role: 'assistant',
+        content: reply
+      }
     );
     await pool.query('UPDATE chat_conversations SET updated_at = NOW() WHERE id = :conversationId', { conversationId });
+
+
+    
 
     // Progresso automático: se a pergunta falou de um módulo que o
     // utilizador tem ativo, considera-se que "estudou" esse módulo hoje —
