@@ -164,9 +164,9 @@ async function googleAuth(req, res, next) {
         await pool.query('UPDATE users SET google_id = :googleId WHERE id = :id', { googleId, id: user.id });
       } else {
         const [result] = await pool.query(
-          'INSERT INTO users (name, email, auth_provider, google_id) VALUES (:name, :email, "google", :googleId)',
-          { name, email, googleId }
-        );
+        'INSERT INTO users (name, email, auth_provider, google_id) VALUES (:name, :email, :authProvider, :googleId)',
+        { name, email, authProvider: 'google', googleId }
+      );
         await pool.query('INSERT INTO user_settings (user_id) VALUES (:userId)', { userId: result.insertId });
         user = { id: result.insertId, name, email };
         isNewUser = true;
