@@ -1,35 +1,29 @@
 const path = require('path');
+const fs = require('fs'); // <--- 1. IMPORTAR O FS
 const { Resend } = require('resend');
 
 const resend = new Resend(process.env.RESEND_API_KEY);
-
 const BRAND_GOLD = '#D97706';
 const LOGO_PATH = path.join(__dirname, '..', 'assets', 'logo.png');
 const LOGO_CID = 'lundoia-logo';
 
 // Moldura visual partilhada por todos os emails: logo + "LundoIA" a dourado
-
-
 function renderEmailShell({ title, bodyHtml }) {
   return `
   <body style="margin:0; padding:0; background:#f4f1ec;">
     <div style="max-width:480px; margin:0 auto; padding:32px 16px; font-family:'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
       <div style="background:#ffffff; border-radius:16px; overflow:hidden; border:1px solid #ece5d8;">
-
         <div style="background:#1a120c; padding:28px 24px; text-align:center;">
           <img src="cid:${LOGO_CID}" alt="LundoIA" width="56" height="56" style="display:block; margin:0 auto 12px; border-radius:12px;">
           <span style="color:${BRAND_GOLD}; font-size:22px; font-weight:700; letter-spacing:0.02em;">LundoIA</span>
         </div>
-
         <div style="padding:32px 28px; color:#1a120c; line-height:1.6; font-size:15px;">
           ${title ? `<h2 style="margin:0 0 16px; font-size:19px; color:#1a120c;">${title}</h2>` : ''}
           ${bodyHtml}
         </div>
-
         <div style="padding:20px 28px; border-top:1px solid #f0ece2; text-align:center;">
           <span style="color:${BRAND_GOLD}; font-weight:600; font-size:13px;">— LundoIA</span>
         </div>
-
       </div>
     </div>
   </body>`;
@@ -39,6 +33,9 @@ async function send({ to, subject, title, bodyHtml }) {
   const html = renderEmailShell({ title, bodyHtml });
 
   try {
+    // 2. LER O FICHEIRO DA IMAGEM COMO BUFFER
+    const logoBuffer = fs.readFileSync(LOGO_PATH);
+
     const { data, error } = await resend.emails.send({
       from: process.env.RESEND_FROM || 'LundoIA <onboarding@resend.dev>',
       to,
@@ -47,7 +44,7 @@ async function send({ to, subject, title, bodyHtml }) {
       attachments: [
         {
           filename: 'lundoia-logo.png',
-          path: LOGO_PATH,
+          content: logoBuffer, // <--- 3. PASSAR O BUFFER EM VEZ DE 'path'
           contentId: LOGO_CID,
         },
       ],
@@ -65,6 +62,8 @@ async function send({ to, subject, title, bodyHtml }) {
     return { simulated: false, error: true };
   }
 }
+
+// O resto das funções do seu ficheiro continuam exatamente iguais...
 
 function sendWelcomeEmail(user) {
   return send({
