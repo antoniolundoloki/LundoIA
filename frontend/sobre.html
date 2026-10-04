@@ -1,0 +1,1333 @@
+
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Sobre a LundoIA</title>
+
+  <meta
+    name="description"
+    content="Conheça a LundoIA, uma plataforma de estudo com inteligência artificial criada para apoiar estudantes e universitários angolanos."
+  >
+<link rel="icon" href="assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/apple-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="app.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/12.0.2/marked.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.1.6/purify.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --background: #0d0a07;
+      --background-soft: #15100b;
+      --card: rgba(255, 255, 255, 0.035);
+      --border: rgba(255, 255, 255, 0.09);
+      --text: #f5efe8;
+      --mutede: #aaa29a;
+      --max-width: 1120px;
+
+
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    
+
+    .container {
+      width: min(var(--max-width), calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    /* =========================
+       HEADER
+    ========================== */
+
+ 
+
+    
+
+
+
+  
+
+
+    /* =========================
+       HERO
+    ========================== */
+
+    .hero {
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
+      text-align: center;
+      padding: 110px 20px 90px;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      background:
+        radial-gradient(
+          ellipse at 50% 0%,
+          oklch(57.977% 0.17962 40.05 / 0.2),
+          transparent 60%
+        );
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      background: oklch(57.977% 0.17962 40.05 / 0.1);
+      filter: blur(100px);
+      top: -320px;
+      left: calc(50% - 250px);
+      z-index: -1;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      padding: 9px 15px;
+      border-radius: 999px;
+      color: #e7a34b;
+      background: rgba(217,119,6,0.07);
+      border: 1px solid rgba(217,119,6,0.28);
+      font-size: 0.76rem;
+      font-weight: 600;
+    }
+
+    .eyebrow-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--primary-light);
+      box-shadow: 0 0 12px var(--primary-light);
+    }
+
+    .hero h1 {
+      max-width: 900px;
+      margin: 25px auto 17px;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: clamp(2.7rem, 7vw, 5.4rem);
+      line-height: 1.02;
+      letter-spacing: -0.055em;
+    }
+
+    .highlight {
+      color: var(--primary-light);
+    }
+
+    .hero-description {
+      max-width: 720px;
+      margin: 0 auto;
+      color: var(--mutede);
+      font-size: clamp(1rem, 2vw, 1.18rem);
+      line-height: 1.85;
+    }
+
+    .hero-buttons {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 31px;
+    }
+
+    .hero-buttons .btn {
+      min-height: 48px;
+      padding: 0 23px;
+    }
+
+    .hero-note {
+      margin-top: 34px;
+      color: #938b84;
+      font-size: 0.85rem;
+    }
+
+    .hero-note strong {
+      color: var(--primary-light);
+      margin-right: 7px;
+    }
+
+    /* =========================
+       SECTIONS
+    ========================== */
+
+    section {
+      padding: 100px 0;
+    }
+
+    .section-soft {
+      background: rgba(255,255,255,0.018);
+      border-block: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .section-kicker {
+      display: inline-block;
+      color: oklch(0.58 0.18 40);
+      font-size: 0.73rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      margin-top: 14px;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      line-height: 1.12;
+      letter-spacing: -0.04em;
+    }
+
+    .two-columns {
+      display: grid;
+      grid-template-columns: 0.85fr 1.15fr;
+      gap: 90px;
+      align-items: start;
+    }
+
+    .content {
+      max-width: 700px;
+    }
+
+    .content p {
+      color: var(--mutede);
+      line-height: 1.85;
+      margin-bottom: 17px;
+    }
+
+    .content .large {
+      color: var(--text);
+      font-size: 1.22rem;
+      line-height: 1.65;
+    }
+
+    /* =========================
+       PURPOSE
+    ========================== */
+
+    .section-heading {
+      max-width: 720px;
+      margin: 0 auto 45px;
+      text-align: center;
+    }
+
+    .section-heading p {
+      margin-top: 17px;
+      color: var(--mutede);
+      line-height: 1.8;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .card {
+      padding: 28px;
+      border-radius: 18px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      transition: 0.25s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      border-color: oklch(0.58 0.18 40);
+      background: rgba(217,119,6,0.035);
+    }
+
+    .card-icon {
+      width: 44px;
+      height: 44px;
+      display: grid;
+      place-items: center;
+      border-radius: 12px;
+      background: oklch(0.58 0.18 40);
+      color: var(--primary-light);
+      font-size: 1.3rem;
+    }
+
+    .card h3 {
+      margin: 19px 0 8px;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 1.1rem;
+    }
+
+    .card p {
+      color: var(--mutede);
+      font-size: 0.94rem;
+      line-height: 1.75;
+    }
+
+    /* =========================
+       MISSION
+    ========================== */
+
+    .mission {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 90px;
+      align-items: center;
+    }
+
+    .visual {
+      min-height: 350px;
+      position: relative;
+      display: grid;
+      place-items: center;
+    }
+
+    .orbit {
+      position: absolute;
+      border: 1px solid oklch(57.977% 0.17962 40.05 / 0.527);
+      border-radius: 50%;
+    }
+
+    .orbit.one {
+      width: 290px;
+      height: 220px;
+      transform: rotate(-25deg);
+    }
+
+    .orbit.two {
+      width: 220px;
+      height: 305px;
+      transform: rotate(48deg);
+    }
+
+    .core {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      text-align: center;
+      background: radial-gradient(circle at 35% 25%, #3c2816, #17100a 72%);
+      border: 1px solid oklch(0.58 0.18 40);
+      box-shadow:
+        0 0 80px oklch(57.977% 0.17962 40.05 / 0.205),
+        inset 0 0 30px rgba(217,119,6,0.08);
+    }
+
+    .core-symbol {
+      color: var(--primary-light);
+      font-size: 1.45rem;
+    }
+
+    .core strong {
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 1.45rem;
+    }
+
+    .core strong span {
+      color: var(--primary-light);
+    }
+
+    .core small {
+      color: #9c948d;
+      font-size: 0.58rem;
+    }
+
+    .mission-copy p {
+      color: var(--mutede);
+      line-height: 1.85;
+      margin-top: 18px;
+    }
+
+    /* =========================
+       AUDIENCE
+    ========================== */
+
+    .audience {
+      max-width: 850px;
+      margin: auto;
+    }
+
+    .audience-item {
+      display: grid;
+      grid-template-columns: 55px 1fr;
+      gap: 20px;
+      padding: 24px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .audience-item:last-child {
+      border-bottom: 0;
+    }
+
+    .number {
+      color: var(--primary-light);
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 600;
+    }
+
+    .audience-item h3 {
+      margin-bottom: 6px;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 1.1rem;
+    }
+
+    .audience-item p {
+      color: var(--mutede);
+      line-height: 1.75;
+      font-size: 0.94rem;
+    }
+
+    /* =========================
+       HOW
+    ========================== */
+
+    .how {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 90px;
+    }
+
+    .how-description {
+      color: var(--mutede);
+      line-height: 1.85;
+      margin-top: 20px;
+    }
+
+    .text-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 20px;
+      color: var(--primary-light);
+      font-weight: 700;
+    }
+
+    .steps {
+      display: grid;
+      gap: 11px;
+    }
+
+    .step {
+      display: grid;
+      grid-template-columns: 43px 1fr;
+      gap: 18px;
+      padding: 20px;
+      border-radius: 15px;
+      background: var(--card);
+      border: 1px solid var(--border);
+    }
+
+    .step-number {
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      border-radius: 11px;
+      color: var(--primary-light);
+      background: oklch(0.58 0.18 40);
+      font-weight: 700;
+    }
+
+    .step h3 {
+      margin-bottom: 5px;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 1.05rem;
+    }
+
+    .step p {
+      color: var(--mutede);
+      font-size: 0.92rem;
+      line-height: 1.7;
+    }
+
+    /* =========================
+       DISCLAIMER
+    ========================== */
+
+    .disclaimer {
+      padding-top: 0;
+    }
+
+    .disclaimer-box {
+      display: flex;
+      gap: 18px;
+      align-items: flex-start;
+      padding: 24px 27px;
+      border-radius: 16px;
+      border: 1px solid oklch(57.977% 0.17962 40.05 / 0.5);
+      background: rgba(217,119,6,0.055);
+    }
+
+    .info-icon {
+      flex: 0 0 29px;
+      height: 29px;
+      display: grid;
+      place-items: center;
+      border: 1px solid oklch(0.58 0.18 40);
+      border-radius: 50%;
+      color: var(--primary-light);
+      font-weight: 700;
+    }
+
+    .disclaimer h3 {
+      margin-bottom: 6px;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 1rem;
+    }
+
+    .disclaimer p {
+      color: var(--mutede);
+      font-size: 0.9rem;
+      line-height: 1.7;
+    }
+
+    /* =========================
+       CTA
+    ========================== */
+
+    .final-cta {
+      text-align: center;
+      padding: 85px 0 100px;
+      border-top: 1px solid oklch(57.977% 0.17962 40.05 / 0.2);
+      background:
+        radial-gradient(
+          ellipse at 50% 100%,
+          oklch(57.977% 0.17962 40.05 / 0.2),
+          transparent 65%
+        );
+    }
+
+    .final-cta h2 {
+      max-width: 780px;
+      margin: 15px auto;
+    }
+
+    .final-cta p {
+      color: var(--mutede);
+      margin-bottom: 28px;
+    }
+
+    /* =========================
+       FOOTER
+    ========================== */
+
+
+    /* =========================
+       MOBILE
+    ========================== */
+
+    .mobile-menu {
+      display: none;
+      padding: 15px 0 22px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .mobile-menu a {
+      display: block;
+      padding: 11px 0;
+      color: #bdb5ad;
+    }
+
+    .mobile-actions {
+      display: flex;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    @media (max-width: 850px) {
+      nav,
+      .header-buttons {
+        display: none;
+      }
+
+      .menu-button {
+        display: grid;
+        place-items: center;
+      }
+
+      .two-columns,
+      .mission,
+      .how {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+      .visual {
+        min-height: 290px;
+        order: 2;
+      }
+
+      .mission-copy {
+        order: 1;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        width: min(100% - 32px, 600px);
+      }
+
+      .hero {
+        padding: 75px 16px 65px;
+      }
+
+      section {
+        padding: 70px 0;
+      }
+
+      .hero-buttons {
+        flex-direction: column;
+      }
+
+      .hero-buttons .btn {
+        width: 100%;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+      }
+
+      .disclaimer-box {
+        padding: 19px;
+      }
+
+      .orbit.one {
+        width: 240px;
+        height: 185px;
+      }
+
+      .orbit.two {
+        width: 185px;
+        height: 255px;
+      }
+
+      .core {
+        width: 150px;
+        height: 150px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- =========================
+       HEADER
+  ========================== -->
+  <!-- ===== HEADER ===== -->
+  <header class="site-header" id="site-header">
+    <div class="site-header__inner">
+      <a href="#" aria-label="Início LundoIA" class="logo-link">
+        <div class="logo">
+          <span class="logo__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20">
+              <path d="M12 3 3 8l9 5 9-5-9-5Z"/>
+              <path d="M3 8v6l9 5 9-5V8"/>
+            </svg>
+          </span>
+          <span class="logo__text">Lundo<span class="text-primary">IA</span></span>
+        </div>
+      </a>
+
+      <nav class="main-nav" aria-label="Principal">
+         <a href="index.html">Início</a>
+        <a href="#historia">Plataforma</a>
+        <a href="#proposito">Propósito</a>
+        <a href="#como-funciona">Como funciona</a>
+      </nav>
+
+      <div class="header-actions">
+        <a href="entrar.html" class="btn btn--ghost" target="_blank">Entrar</a>
+        <a href="index.html#experimentar" class="btn btn--primary">Começar grátis</a>
+      </div>
+
+      <button type="button" class="menu-toggle" id="menu-toggle" aria-label="Abrir menu" aria-expanded="false">
+        <svg class="icon-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="22" height="22"><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+        <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="22" height="22" hidden><line x1="18" x2="6" y1="6" y2="18"/><line x1="6" x2="18" y1="6" y2="18"/></svg>
+      </button>
+    </div>
+
+    <div class="mobile-nav" id="mobile-nav" hidden>
+      <nav aria-label="Móvel">
+         <a href="#funcionalidades">Início</a>
+        <a href="#historia">Plataforma</a>
+        <a href="#proposito">Propósito</a>
+        <a href="#como-funciona">Como funciona</a>
+        <div class="mobile-nav__actions">
+          <a href="entrar.html" class="btn btn--outline btn--full" target="_blank">Entrar</a>
+          <a href="index.html#experimentar" class="btn btn--primary btn--full">Começar grátis</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+
+  <main>
+
+    <!-- =========================
+         HERO
+    ========================== -->
+
+    <section class="hero">
+
+      <div class="eyebrow">
+        <span class="eyebrow-dot"></span>
+        A tecnologia ao serviço da educação
+      </div>
+
+      <h1>
+        Conheça a
+        <span class="highlight">LundoIA</span>
+      </h1>
+
+      <p class="hero-description">
+        Uma plataforma de estudo com inteligência artificial,
+        criada para aproximar a tecnologia da realidade de
+        quem aprende em Angola.
+      </p>
+
+      <div class="hero-buttons">
+        <a href="index.html#experimentar" class="btn btn-primary">
+          Experimentar a LundoIA
+        </a>
+
+        <a href="#historia" class="btn btn-outline">
+          Conhecer o projeto
+        </a>
+      </div>
+
+      <div class="hero-note">
+        <strong>✦</strong>
+        Estudar com inteligência, à maneira de casa.
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         O QUE É
+    ========================== -->
+
+    <section id="historia">
+
+      <div class="container two-columns">
+
+        <div>
+          <span class="section-kicker">
+            01 / A plataforma
+          </span>
+
+          <h2>
+            O que é a
+            <span class="highlight">LundoIA</span>?
+          </h2>
+        </div>
+
+        <div class="content">
+
+          <p class="large">
+            A LundoIA é uma assistente de estudos baseada em
+            inteligência artificial, pensada para apoiar
+            estudantes do ensino médio e universitários.
+          </p>
+
+          <p>
+            O seu objetivo é ajudar a compreender matérias,
+            esclarecer dúvidas, resolver exercícios e preparar
+            avaliações através de explicações organizadas e
+            acessíveis.
+          </p>
+
+          <p>
+            A plataforma procura considerar o percurso académico
+            e o contexto de aprendizagem de cada utilizador.
+          </p>
+
+          <p>
+            Mais do que apresentar respostas, a LundoIA pretende
+            ser uma ferramenta de apoio à aprendizagem,
+            incentivando a compreensão, a curiosidade e o estudo
+            autónomo.
+          </p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         PROPÓSITO
+    ========================== -->
+
+    <section class="section-soft" id="proposito">
+
+      <div class="container">
+
+        <div class="section-heading">
+
+          <span class="section-kicker">
+            02 / Propósito
+          </span>
+
+          <h2>
+            Porque nasceu a LundoIA?
+          </h2>
+
+          <p>
+            A tecnologia deve ajudar a resolver necessidades reais.
+            A LundoIA nasce da vontade de tornar o apoio ao estudo
+            mais próximo, contextualizado e acessível aos estudantes
+            angolanos.
+          </p>
+
+        </div>
+
+
+        <div class="cards">
+
+          <article class="card">
+
+            <div class="card-icon">
+              ◎
+            </div>
+
+            <h3>
+              Contexto local
+            </h3>
+
+            <p>
+              Valorizar exemplos, referências e realidades que
+              façam sentido no ambiente de ensino e aprendizagem
+              em Angola.
+            </p>
+
+          </article>
+
+
+          <article class="card">
+
+            <div class="card-icon">
+              ✳
+            </div>
+
+            <h3>
+              Aprendizagem clara
+            </h3>
+
+            <p>
+              Apresentar explicações por etapas, para que o
+              estudante possa acompanhar o raciocínio e construir
+              conhecimento.
+            </p>
+
+          </article>
+
+
+          <article class="card">
+
+            <div class="card-icon">
+              ↗
+            </div>
+
+            <h3>
+              Mais autonomia
+            </h3>
+
+            <p>
+              Incentivar o estudo independente, a prática e a
+              procura ativa por conhecimento dentro e fora da
+              sala de aula.
+            </p>
+
+          </article>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         MISSÃO
+    ========================== -->
+
+    <section>
+
+      <div class="container mission">
+
+        <div class="visual">
+
+          <div class="orbit one"></div>
+          <div class="orbit two"></div>
+
+          <div class="core">
+
+            <div class="core-symbol">
+              ✦
+            </div>
+
+            <strong>
+              Lundo<span>IA</span>
+            </strong>
+
+            <small>
+              Aprender • Compreender • Evoluir
+            </small>
+
+          </div>
+
+        </div>
+
+
+        <div class="mission-copy">
+
+          <span class="section-kicker">
+            03 / O nosso compromisso
+          </span>
+
+          <h2>
+            Aprender deve ser uma possibilidade para todos.
+          </h2>
+
+          <p>
+            A nossa missão é contribuir para uma experiência
+            de estudo mais apoiada pela tecnologia, sem substituir
+            o papel dos professores, das instituições de ensino
+            ou do esforço individual.
+          </p>
+
+          <p>
+            A inteligência artificial é uma ferramenta.
+            O conhecimento constrói-se com perguntas, prática,
+            pensamento crítico e dedicação.
+          </p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         PARA QUEM
+    ========================== -->
+
+    <section class="section-soft">
+
+      <div class="container">
+
+        <div class="section-heading">
+
+          <span class="section-kicker">
+            04 / Para quem
+          </span>
+
+          <h2>
+            Feita para diferentes percursos de aprendizagem
+          </h2>
+
+          <p>
+            A LundoIA procura adaptar o apoio ao objetivo e ao
+            nível de cada pessoa.
+          </p>
+
+        </div>
+
+
+        <div class="audience">
+
+          <div class="audience-item">
+
+            <span class="number">
+              01
+            </span>
+
+            <div>
+
+              <h3>
+                Estudantes do ensino médio
+              </h3>
+
+              <p>
+                Apoio na compreensão das disciplinas,
+                resolução de exercícios e preparação para provas.
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <div class="audience-item">
+
+            <span class="number">
+              02
+            </span>
+
+            <div>
+
+              <h3>
+                Estudantes universitários
+              </h3>
+
+              <p>
+                Ajuda no estudo de conteúdos relacionados com
+                cursos, áreas de formação e temas académicos.
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <div class="audience-item">
+
+            <span class="number">
+              03
+            </span>
+
+            <div>
+
+              <h3>
+                Aprendizes em geral
+              </h3>
+
+              <p>
+                Um espaço para colocar perguntas, explorar
+                assuntos e aprender sobre diferentes temas.
+              </p>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         COMO FUNCIONA
+    ========================== -->
+
+    <section>
+
+      <div class="container how" id="como-funciona">
+
+        <div>
+
+          <span class="section-kicker">
+            05 / Como funciona
+          </span>
+
+          <h2>
+            O teu estudo começa com uma pergunta.
+          </h2>
+
+          <p class="how-description">
+            A experiência foi pensada para ser simples:
+            partilha o teu contexto, apresenta a tua dúvida
+            e utiliza a explicação como ponto de partida
+            para aprender.
+          </p>
+
+          <a
+            href="index.html#experimentar"
+            class="text-link"
+          >
+            Experimentar agora →
+          </a>
+
+        </div>
+
+
+        <div class="steps">
+
+          <div class="step">
+
+            <span class="step-number">
+              1
+            </span>
+
+            <div>
+
+              <h3>
+                Indica o teu percurso
+              </h3>
+
+              <p>
+                Partilha o teu nível de ensino e, quando aplicável,
+                o teu curso ou área.
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <div class="step">
+
+            <span class="step-number">
+              2
+            </span>
+
+            <div>
+
+              <h3>
+                Faz a tua pergunta
+              </h3>
+
+              <p>
+                Escreve uma dúvida, pede uma explicação ou
+                solicita exercícios para praticar.
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <div class="step">
+
+            <span class="step-number">
+              3
+            </span>
+
+            <div>
+
+              <h3>
+                Estuda e aprofunda
+              </h3>
+
+              <p>
+                Analisa a resposta, questiona, pratica e confirma
+                os conteúdos com os teus materiais de estudo.
+              </p>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         AVISO
+    ========================== -->
+
+    <section class="disclaimer">
+
+      <div class="container">
+
+        <div class="disclaimer-box">
+
+          <span class="info-icon">
+            i
+          </span>
+
+          <div>
+
+            <h3>
+              Uma ferramenta de apoio, não um substituto do ensino.
+            </h3>
+
+            <p>
+              As respostas geradas por inteligência artificial
+              podem conter imprecisões. Consulta os teus professores,
+              manuais e fontes académicas, especialmente antes de
+              utilizar informação em trabalhos ou avaliações.
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         CTA FINAL
+    ========================== -->
+
+    <section class="final-cta">
+
+      <div class="container">
+
+        <span class="section-kicker">
+          O próximo passo é teu
+        </span>
+
+        <h2>
+          O conhecimento começa com vontade de aprender.
+        </h2>
+
+        <p>
+          Explora a LundoIA e descobre uma nova forma
+          de apoiar os teus estudos.
+        </p>
+
+        <a
+          href="index.html#experimentar"
+          class="btn btn-primary"
+        >
+          Começar a estudar
+        </a>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- =========================
+       FOOTER
+  ========================== -->
+
+    <!-- ===== FOOTER ===== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="logo">
+            <span class="logo__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20">
+                <path d="M12 3 3 8l9 5 9-5-9-5Z"/>
+                <path d="M3 8v6l9 5 9-5V8"/>
+              </svg>
+            </span>
+            <span class="logo__text">Lundo<span class="text-primary">IA</span></span>
+          </div>
+          <p>A assistente de estudos com inteligência artificial feita para estudantes e universitários angolanos.</p>
+        </div>
+
+        <div class="footer-col">
+          <h3>Links úteis</h3>
+          <ul>
+            <li><a href="#funcionalidades">Funcionalidades</a></li>
+            <li><a href="#disciplinas">Cursos ou áreas</a></li>
+            <li><a href="#como-funciona">Como funciona</a></li>
+            <li><a href="#experimentar">Experimentar</a></li>
+          </ul>
+        </div>
+
+        
+
+        <div class="footer-col">
+          <h3>Sobre</h3>
+          <ul>
+            <li><a href="#">Sobre a LundoIA</a></li>
+            <li><a href="https://antoniolundoloki.github.io/Portifolio/" target="_blank">Sobre o Desenvolvedor</a></li>
+            <li><a href="termos.html">Termos de Uso</a></li>
+            <li><a href="privacidade.html">Privacidade</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© <span id="year"></span> LundoIA. Feito em Angola por Eng. António Lundoloki.</p>
+        <p>Estudar com inteligência, à maneira de casa.</p>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- =========================
+       JAVASCRIPT
+  ========================== -->
+<script src="app.js"></script>
+  <script>
+
+    const menuButton = document.getElementById("menuButton");
+    const mobileMenu = document.getElementById("mobileMenu");
+
+    menuButton.addEventListener("click", function () {
+
+      const opened =
+        mobileMenu.style.display === "block";
+
+      mobileMenu.style.display =
+        opened ? "none" : "block";
+
+      menuButton.setAttribute(
+        "aria-expanded",
+        String(!opened)
+      );
+
+      menuButton.textContent =
+        opened ? "☰" : "✕";
+
+    });
+
+
+    document.querySelectorAll(
+      ".mobile-menu a"
+    ).forEach(function(link) {
+
+      link.addEventListener("click", function() {
+
+        mobileMenu.style.display = "none";
+
+        menuButton.textContent = "☰";
+
+        menuButton.setAttribute(
+          "aria-expanded",
+          "false"
+        );
+
+      });
+
+    });
+
+
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+
+  </script>
+
+</body>
+</html>
