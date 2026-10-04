@@ -107,6 +107,7 @@ p {
   .container {
     padding: 0 1.5rem;
   }
+  
 }
 
 /* ==========================================================================
@@ -266,7 +267,7 @@ p {
   background: var(--muted);
 }
 
-@media (min-width: 768px) {
+@media (min-width: 900px) {
   .main-nav {
     display: flex;
   }
@@ -316,7 +317,7 @@ p {
   height: 2.5rem;
 }
 
-@media (min-width: 768px) {
+@media (min-width: px) {
   .mobile-nav {
     display: none;
   }
@@ -710,6 +711,14 @@ p {
   .chat {
     height: 80vh;
   }
+  
+}
+
+@media (max-width: 700px) {
+  #chat-suggestions {
+    display: none;
+  }
+  
 }
 
 .chat__header {
@@ -1250,6 +1259,7 @@ p {
   .footer-grid {
     grid-template-columns: 1.5fr 1fr 1fr 1fr;
   }
+  
 }
 
 .footer-brand p {

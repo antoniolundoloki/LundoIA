@@ -1920,3 +1920,381 @@
   background: var(--primary);
   border-color: var(--primary);
 }
+
+
+/* Módulos e Biblioteca para telas pequenas */
+
+/* ==========================================================================
+   RESPONSIVIDADE — MÓDULOS E BIBLIOTECA
+   ========================================================================== */
+
+/* Garante que os componentes nunca ultrapassem a largura da tela */
+.module-item,
+.library-card,
+.modules-add__panel,
+.library-toolbar {
+  min-width: 0;
+  max-width: 100%;
+}
+
+
+/* ==========================================================================
+   TABLETS — até 800px
+   ========================================================================== */
+
+@media (max-width: 800px) {
+
+  /* Biblioteca: mantém uma coluna */
+  .library-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Módulo */
+  .module-item {
+    gap: 0.85rem;
+    padding: 1rem;
+  }
+
+  .module-item__link {
+    gap: 0.85rem;
+  }
+
+  .module-item__top {
+    gap: 0.75rem;
+  }
+
+  /* Toolbar */
+  .library-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .library-toolbar .search-bar {
+    width: 100%;
+    min-width: 0;
+    max-width: none;
+  }
+}
+
+
+/* ==========================================================================
+   CELULARES — até 600px
+   ========================================================================== */
+
+@media (max-width: 600px) {
+
+  /* ------------------------------------------------------------------------
+     MÓDULOS
+     ------------------------------------------------------------------------ */
+
+  .module-item {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0.95rem;
+    gap: 0.8rem;
+  }
+
+  .module-item__link {
+    width: 100%;
+    flex: 1 1 100%;
+  }
+
+  .module-item__body {
+    min-width: 0;
+  }
+
+  .module-item__top {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .module-item__top h3 {
+    font-size: 0.92rem;
+    line-height: 1.35;
+    overflow-wrap: anywhere;
+  }
+
+  .module-item__top span {
+    font-size: 0.74rem;
+  }
+
+  .module-item__meta {
+    line-height: 1.4;
+  }
+
+  /* Botões do módulo */
+  .module-item__actions {
+    width: 100%;
+    margin-left: 0;
+    justify-content: flex-end;
+  }
+
+  .module-item__study-btn {
+    flex: 1;
+    justify-content: center;
+    min-height: 2.5rem;
+  }
+
+  .module-item__archive-btn {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+
+
+  /* ------------------------------------------------------------------------
+     ADICIONAR MÓDULO
+     ------------------------------------------------------------------------ */
+
+  .modules-add__panel {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 1rem;
+  }
+
+  .modules-add__panel select {
+    width: 100%;
+    min-width: 0;
+    height: 2.8rem;
+  }
+
+  .modules-add__panel .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+
+  /* ------------------------------------------------------------------------
+     BIBLIOTECA
+     ------------------------------------------------------------------------ */
+
+  .library-grid {
+    grid-template-columns: 1fr;
+    gap: 0.85rem;
+  }
+
+  .library-card {
+    align-items: flex-start;
+    flex-wrap: wrap;
+    padding: 1rem;
+    gap: 0.8rem;
+  }
+
+  .library-card__body {
+    min-width: 0;
+    flex: 1;
+  }
+
+  .library-card__body h3 {
+    white-space: normal;
+    overflow: visible;
+    text-overflow: unset;
+    overflow-wrap: anywhere;
+    line-height: 1.35;
+  }
+
+  .library-card__body span {
+    display: block;
+    margin-top: 0.2rem;
+    line-height: 1.4;
+  }
+
+  /* Ações passam para baixo no celular */
+  .library-card__actions {
+    width: 100%;
+    justify-content: flex-end;
+    margin-top: 0.15rem;
+  }
+
+  .library-card__read {
+    flex: 1;
+    justify-content: center;
+    min-height: 2.5rem;
+  }
+
+  .library-card__download {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+
+  /* Etiqueta "Sugerido para ti" */
+  .library-card.is-recommended::after {
+    right: 0.7rem;
+    font-size: 0.6rem;
+  }
+
+
+  /* ------------------------------------------------------------------------
+     PESQUISA
+     ------------------------------------------------------------------------ */
+
+  .search-bar {
+    width: 100%;
+    max-width: none;
+  }
+
+  .search-bar input {
+    height: 2.9rem;
+    font-size: 16px;
+  }
+}
+
+
+/* ==========================================================================
+   CELULARES PEQUENOS — até 480px
+   ========================================================================== */
+
+@media (max-width: 480px) {
+
+  .module-item {
+    padding: 0.85rem;
+    border-radius: 0.85rem;
+  }
+
+  .module-item__icon {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 0.7rem;
+  }
+
+  .module-item__link {
+    gap: 0.7rem;
+  }
+
+  .module-item__top h3 {
+    font-size: 0.88rem;
+  }
+
+  .module-item__top span,
+  .module-item__meta {
+    font-size: 0.72rem;
+  }
+
+  .module-item__study-btn {
+    font-size: 0.76rem;
+    padding: 0.5rem 0.7rem;
+  }
+
+
+  .library-card {
+    padding: 0.85rem;
+    border-radius: 0.85rem;
+  }
+
+  .library-card__icon {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+
+  .library-card__body h3 {
+    font-size: 0.84rem;
+  }
+
+  .library-card__body span {
+    font-size: 0.72rem;
+  }
+
+  .library-card__read {
+    font-size: 0.76rem;
+  }
+}
+
+
+/* ==========================================================================
+   CELULARES MUITO PEQUENOS — até 360px
+   ========================================================================== */
+
+@media (max-width: 360px) {
+
+  .module-item,
+  .library-card {
+    padding: 0.75rem;
+  }
+
+  .module-item__icon,
+  .library-card__icon {
+    width: 2.25rem;
+    height: 2.25rem;
+  }
+
+  .module-item__link {
+    gap: 0.6rem;
+  }
+
+  .module-item__top h3 {
+    font-size: 0.84rem;
+  }
+
+  .module-item__meta,
+  .module-item__top span {
+    font-size: 0.68rem;
+  }
+
+  .module-item__actions {
+    gap: 0.4rem;
+  }
+
+  .module-item__study-btn {
+    min-height: 2.35rem;
+    font-size: 0.72rem;
+  }
+
+  .module-item__archive-btn {
+    width: 2.35rem;
+    height: 2.35rem;
+  }
+
+
+  .library-card__body h3 {
+    font-size: 0.8rem;
+  }
+
+  .library-card__body span {
+    font-size: 0.68rem;
+  }
+
+  .library-card__read {
+    min-height: 2.35rem;
+    font-size: 0.72rem;
+  }
+
+  .library-card__download {
+    width: 2.35rem;
+    height: 2.35rem;
+  }
+
+  .library-card.is-recommended::after {
+    top: -0.45rem;
+    right: 0.5rem;
+    padding: 0.12rem 0.45rem;
+    font-size: 0.55rem;
+  }
+}
+
+
+/* ==========================================================================
+   TELAS EXTREMAMENTE PEQUENAS — até 320px
+   ========================================================================== */
+
+@media (max-width: 320px) {
+
+  .module-item,
+  .library-card {
+    padding: 0.65rem;
+  }
+
+  .module-item__study-btn {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+
+  .module-item__study-btn svg,
+  .library-card__read svg {
+    display: none;
+  }
+
+  .library-card__read {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+}

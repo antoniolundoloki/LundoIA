@@ -1583,57 +1583,1164 @@ const DEFAULT_MODULE_LABELS = [
 
 // Palavras-chave para relacionar o curso com as disciplinas fixas da
 // Biblioteca (Direito, Matemática, Medicina, Informática, Economia, Física).
+// ============================================================================
+// RELAÇÃO ENTRE CURSOS E DISCIPLINAS DA BIBLIOTECA
+// ============================================================================
+
 const LIBRARY_DISCIPLINE_MAP = [
-  { discipline: 'Informática', keywords: ['informatica', 'engenharia informatica', 'ti', 'tecnologia', 'programacao'] },
-  { discipline: 'Direito', keywords: ['direito'] },
-  { discipline: 'Medicina', keywords: ['medicina', 'enfermagem'] },
-  { discipline: 'Economia', keywords: ['economia', 'gestao', 'contabilidade'] },
-  { discipline: 'Física', keywords: ['fisica'] },
-  { discipline: 'Matemática', keywords: ['matematica', 'calculo'] },
+
+  // --------------------------------------------------------------------------
+  // INFORMÁTICA E TECNOLOGIA
+  // --------------------------------------------------------------------------
+
+  {
+    discipline: 'Informática',
+    keywords: [
+      'informatica',
+      'informática',
+      'engenharia informatica',
+      'engenharia informática',
+      'tecnologia de informacao',
+      'tecnologia da informacao',
+      'tecnologias de informacao',
+      'tecnologias da informacao',
+      'tecnologias de informação',
+      'tecnologia',
+      'ti',
+      'computacao',
+      'computação',
+      'ciencia da computacao',
+      'ciência da computação',
+      'sistemas de informacao',
+      'sistemas de informação',
+      'sistemas informaticos',
+      'sistemas informáticos'
+    ]
+  },
+
+  {
+    discipline: 'Programação',
+    keywords: [
+      'programacao',
+      'programação',
+      'engenharia de software',
+      'desenvolvimento de software',
+      'desenvolvimento web',
+      'desenvolvimento de sistemas',
+      'desenvolvimento de aplicacoes',
+      'desenvolvimento de aplicações',
+      'software',
+      'programador',
+      'programador de software',
+      'programacao web',
+      'programação web',
+      'programacao orientada a objetos',
+      'programação orientada a objetos',
+      'algoritmos',
+      'logica de programacao',
+      'lógica de programação'
+    ]
+  },
+
+  {
+    discipline: 'Redes de Computadores',
+    keywords: [
+      'redes',
+      'redes de computadores',
+      'engenharia de redes',
+      'redes informaticas',
+      'redes informáticas',
+      'administracao de redes',
+      'administração de redes',
+      'infraestrutura de redes',
+      'infraestrutura de ti',
+      'infraestrutura de tecnologia',
+      'telecomunicacoes',
+      'telecomunicações',
+      'comunicacoes',
+      'comunicações',
+      'seguranca de redes',
+      'segurança de redes',
+      'networking',
+      'sistemas de redes'
+    ]
+  },
+
+  {
+    discipline: 'Banco de Dados',
+    keywords: [
+      'banco de dados',
+      'bases de dados',
+      'base de dados',
+      'database',
+      'databases',
+      'administracao de banco de dados',
+      'administração de banco de dados',
+      'sistemas de banco de dados',
+      'gestao de dados',
+      'gestão de dados',
+      'engenharia de dados',
+      'dados',
+      'mysql',
+      'sql'
+    ]
+  },
+
+  {
+    discipline: 'Cibersegurança',
+    keywords: [
+      'ciberseguranca',
+      'cibersegurança',
+      'seguranca informatica',
+      'segurança informática',
+      'seguranca da informacao',
+      'segurança da informação',
+      'seguranca de sistemas',
+      'segurança de sistemas',
+      'seguranca de redes',
+      'segurança de redes',
+      'seguranca cibernetica',
+      'segurança cibernética',
+      'cybersecurity',
+      'seguranca digital',
+      'segurança digital',
+      'ethical hacking',
+      'hacking',
+      'criptografia'
+    ]
+  },
+
+  {
+    discipline: 'Inteligência Artificial',
+    keywords: [
+      'inteligencia artificial',
+      'inteligência artificial',
+      'ia',
+      'machine learning',
+      'aprendizado de maquina',
+      'aprendizado de máquina',
+      'deep learning',
+      'aprendizagem automatica',
+      'aprendizagem automática',
+      'ciencia de dados',
+      'ciência de dados',
+      'data science',
+      'robotica',
+      'robótica',
+      'sistemas inteligentes'
+    ]
+  },
+
+
+  // --------------------------------------------------------------------------
+  // MATEMÁTICA
+  // --------------------------------------------------------------------------
+
+  {
+    discipline: 'Matemática',
+    keywords: [
+      'matematica',
+      'matemática',
+      'matematica geral',
+      'matemática geral',
+      'matematica aplicada',
+      'matemática aplicada',
+      'matematica pura',
+      'matemática pura',
+      'ciencias matematicas',
+      'ciências matemáticas',
+      'ensino de matematica',
+      'ensino de matemática'
+    ]
+  },
+
+  {
+    discipline: 'Cálculo',
+    keywords: [
+      'calculo',
+      'cálculo',
+      'calculo diferencial',
+      'cálculo diferencial',
+      'calculo integral',
+      'cálculo integral',
+      'calculo diferencial e integral',
+      'cálculo diferencial e integral',
+      'analise matematica',
+      'análise matemática',
+      'calculo numerico',
+      'cálculo numérico'
+    ]
+  },
+
+  {
+    discipline: 'Estatística',
+    keywords: [
+      'estatistica',
+      'estatística',
+      'estatistica aplicada',
+      'estatística aplicada',
+      'probabilidade',
+      'probabilidades',
+      'analise estatistica',
+      'análise estatística',
+      'estatistica e probabilidade',
+      'estatística e probabilidade',
+      'metodos estatisticos',
+      'métodos estatísticos'
+    ]
+  },
+
+
+  // --------------------------------------------------------------------------
+  // FÍSICA E ENGENHARIAS
+  // --------------------------------------------------------------------------
+
+  {
+    discipline: 'Física',
+    keywords: [
+      'fisica',
+      'física',
+      'fisica geral',
+      'física geral',
+      'fisica aplicada',
+      'física aplicada',
+      'fisica teorica',
+      'física teórica',
+      'fisica experimental',
+      'física experimental',
+      'mecanica',
+      'mecânica',
+      'termodinamica',
+      'termodinâmica',
+      'optica',
+      'óptica',
+      'eletromagnetismo',
+      'electromagnetismo'
+    ]
+  },
+
+  {
+    discipline: 'Engenharia',
+    keywords: [
+      'engenharia',
+      'engenharia civil',
+      'engenharia mecanica',
+      'engenharia mecânica',
+      'engenharia eletrica',
+      'engenharia elétrica',
+      'engenharia electrotecnica',
+      'engenharia electrotécnica',
+      'engenharia eletronica',
+      'engenharia eletrónica',
+      'engenharia informatica',
+      'engenharia informática',
+      'engenharia industrial',
+      'engenharia ambiental',
+      'engenharia quimica',
+      'engenharia química',
+      'engenharia de producao',
+      'engenharia de produção'
+    ]
+  },
+
+  {
+    discipline: 'Eletrónica',
+    keywords: [
+      'eletronica',
+      'eletrónica',
+      'engenharia eletronica',
+      'engenharia eletrónica',
+      'eletronica industrial',
+      'eletrónica industrial',
+      'sistemas eletronicos',
+      'sistemas eletrónicos',
+      'circuitos eletronicos',
+      'circuitos eletrónicos',
+      'microeletronica',
+      'microeletrónica',
+      'automacao',
+      'automação',
+      'instrumentacao',
+      'instrumentação'
+    ]
+  },
+
+
+  // --------------------------------------------------------------------------
+  // DIREITO
+  // --------------------------------------------------------------------------
+
+  {
+    discipline: 'Direito',
+    keywords: [
+      'direito',
+      'direito geral',
+      'ciencias juridicas',
+      'ciências jurídicas',
+      'ciencias juridico',
+      'ciências jurídico',
+      'juridico',
+      'jurídico',
+      'jurisprudencia',
+      'jurisprudência',
+      'estudos juridicos',
+      'estudos jurídicos',
+      'faculdade de direito'
+    ]
+  },
+
+  {
+    discipline: 'Direito Penal',
+    keywords: [
+      'direito penal',
+      'ciencias penais',
+      'ciências penais',
+      'criminologia',
+      'crime',
+      'crimes',
+      'processo penal',
+      'direito criminal',
+      'investigacao criminal',
+      'investigação criminal'
+    ]
+  },
+
+  {
+    discipline: 'Direito Civil',
+    keywords: [
+      'direito civil',
+      'processo civil',
+      'responsabilidade civil',
+      'contratos',
+      'direito das obrigacoes',
+      'direito das obrigações',
+      'direito de familia',
+      'direito de família',
+      'direito das sucessoes',
+      'direito das sucessões'
+    ]
+  },
+
+  {
+    discipline: 'Direito Constitucional',
+    keywords: [
+      'direito constitucional',
+      'direito constitucional e administrativo',
+      'constituicao',
+      'constituição',
+      'ciencia politica',
+      'ciência política',
+      'organizacao do estado',
+      'organização do estado',
+      'direitos fundamentais'
+    ]
+  },
+
+
+  // --------------------------------------------------------------------------
+  // MEDICINA E SAÚDE
+  // --------------------------------------------------------------------------
+
+  {
+    discipline: 'Medicina',
+    keywords: [
+      'medicina',
+      'medicina geral',
+      'medicina humana',
+      'ciencias medicas',
+      'ciências médicas',
+      'ciencias da saude',
+      'ciências da saúde',
+      'medico',
+      'médico',
+      'clinica',
+      'clínica',
+      'medicina interna'
+    ]
+  },
+
+  {
+    discipline: 'Enfermagem',
+    keywords: [
+      'enfermagem',
+      'enfermagem geral',
+      'enfermagem medico cirurgica',
+      'enfermagem médico cirúrgica',
+      'enfermagem comunitaria',
+      'enfermagem comunitária',
+      'enfermagem pediatrica',
+      'enfermagem pediátrica',
+      'enfermagem obstetrica',
+      'enfermagem obstétrica',
+      'enfermeiro',
+      'enfermeira'
+    ]
+  },
+
+  {
+    discipline: 'Farmácia',
+    keywords: [
+      'farmacia',
+      'farmácia',
+      'ciencias farmaceuticas',
+      'ciências farmacêuticas',
+      'farmaceutica',
+      'farmacêutica',
+      'farmacologia',
+      'farmacoterapia',
+      'tecnologia farmaceutica',
+      'tecnologia farmacêutica'
+    ]
+  },
+
+  {
+    discipline: 'Análises Clínicas',
+    keywords: [
+      'analises clinicas',
+      'análises clínicas',
+      'laboratorio clinico',
+      'laboratório clínico',
+      'analises laboratoriais',
+      'análises laboratoriais',
+      'diagnostico laboratorial',
+      'diagnóstico laboratorial',
+      'bioquimica clinica',
+      'bioquímica clínica'
+    ]
+  },
+
+
+  // --------------------------------------------------------------------------
+  // ECONOMIA, GESTÃO E NEGÓCIOS
+  // --------------------------------------------------------------------------
+
+  {
+    discipline: 'Economia',
+    keywords: [
+      'economia',
+      'economia geral',
+      'economia aplicada',
+      'economia empresarial',
+      'economia internacional',
+      'ciencias economicas',
+      'ciências económicas',
+      'ciencias economicas e sociais',
+      'ciências económicas e sociais',
+      'economista'
+    ]
+  },
+
+  {
+    discipline: 'Gestão',
+    keywords: [
+      'gestao',
+      'gestão',
+      'gestao empresarial',
+      'gestão empresarial',
+      'gestao de empresas',
+      'gestão de empresas',
+      'administracao',
+      'administração',
+      'administracao de empresas',
+      'administração de empresas',
+      'gestao empresarial e comercial',
+      'gestão empresarial e comercial',
+      'gestao de negocios',
+      'gestão de negócios'
+    ]
+  },
+
+  {
+    discipline: 'Contabilidade',
+    keywords: [
+      'contabilidade',
+      'contabilidade geral',
+      'contabilidade financeira',
+      'contabilidade de gestao',
+      'contabilidade de gestão',
+      'contabilidade empresarial',
+      'contabilista',
+      'auditoria',
+      'auditoria contabilistica',
+      'auditoria contábil',
+      'fiscalidade',
+      'financas empresariais',
+      'finanças empresariais'
+    ]
+  },
+
+  {
+    discipline: 'Finanças',
+    keywords: [
+      'financas',
+      'finanças',
+      'financas empresariais',
+      'finanças empresariais',
+      'gestao financeira',
+      'gestão financeira',
+      'mercado financeiro',
+      'mercados financeiros',
+      'investimentos',
+      'banca',
+      'sistema financeiro',
+      'analise financeira',
+      'análise financeira'
+    ]
+  },
+
+  {
+    discipline: 'Marketing',
+    keywords: [
+      'marketing',
+      'marketing digital',
+      'publicidade',
+      'comunicacao empresarial',
+      'comunicação empresarial',
+      'comunicacao e marketing',
+      'comunicação e marketing',
+      'gestao de marketing',
+      'gestão de marketing',
+      'mercado',
+      'comportamento do consumidor'
+    ]
+  },
+
+
+  // --------------------------------------------------------------------------
+  // LÍNGUAS E HUMANIDADES
+  // --------------------------------------------------------------------------
+
+  {
+    discipline: 'Língua Portuguesa',
+    keywords: [
+      'portugues',
+      'português',
+      'lingua portuguesa',
+      'língua portuguesa',
+      'literatura portuguesa',
+      'literatura',
+      'letras',
+      'linguistica',
+      'linguística',
+      'ensino de portugues',
+      'ensino de português'
+    ]
+  },
+
+  {
+    discipline: 'Inglês',
+    keywords: [
+      'ingles',
+      'inglês',
+      'lingua inglesa',
+      'língua inglesa',
+      'literatura inglesa',
+      'ensino de ingles',
+      'ensino de inglês',
+      'estudos ingleses',
+      'english'
+    ]
+  },
+
+  {
+    discipline: 'História',
+    keywords: [
+      'historia',
+      'história',
+      'historia geral',
+      'história geral',
+      'historia de africa',
+      'história de áfrica',
+      'historia africana',
+      'história africana',
+      'historia de angola',
+      'história de angola',
+      'ensino de historia',
+      'ensino de história'
+    ]
+  },
+
+  {
+    discipline: 'Geografia',
+    keywords: [
+      'geografia',
+      'geografia geral',
+      'geografia humana',
+      'geografia fisica',
+      'geografia física',
+      'geografia economica',
+      'geografia económica',
+      'cartografia',
+      'ensino de geografia'
+    ]
+  },
+
+  {
+    discipline: 'Filosofia',
+    keywords: [
+      'filosofia',
+      'filosofia geral',
+      'filosofia politica',
+      'filosofia política',
+      'filosofia da ciencia',
+      'filosofia da ciência',
+      'etica',
+      'ética',
+      'pensamento filosofico',
+      'pensamento filosófico'
+    ]
+  },
+
+  {
+    discipline: 'Sociologia',
+    keywords: [
+      'sociologia',
+      'sociologia geral',
+      'sociologia politica',
+      'sociologia política',
+      'sociologia economica',
+      'sociologia económica',
+      'estudos sociais',
+      'ciencias sociais',
+      'ciências sociais'
+    ]
+  },
+
+  {
+    discipline: 'Psicologia',
+    keywords: [
+      'psicologia',
+      'psicologia geral',
+      'psicologia educacional',
+      'psicologia clinica',
+      'psicologia clínica',
+      'psicologia social',
+      'psicologia organizacional',
+      'comportamento humano',
+      'ciencias psicologicas',
+      'ciências psicológicas'
+    ]
+  },
+
+
+  // --------------------------------------------------------------------------
+  // EDUCAÇÃO
+  // --------------------------------------------------------------------------
+
+  {
+    discipline: 'Pedagogia',
+    keywords: [
+      'pedagogia',
+      'ciencias da educacao',
+      'ciências da educação',
+      'educacao',
+      'educação',
+      'educacao infantil',
+      'educação infantil',
+      'educacao primaria',
+      'educação primária',
+      'educacao de infancia',
+      'educação de infância',
+      'pedagogia geral'
+    ]
+  },
+
+  {
+    discipline: 'Didática',
+    keywords: [
+      'didatica',
+      'didática',
+      'didatica geral',
+      'didática geral',
+      'metodologia de ensino',
+      'metodologias de ensino',
+      'metodos de ensino',
+      'métodos de ensino',
+      'praticas pedagogicas',
+      'práticas pedagógicas',
+      'ensino e aprendizagem'
+    ]
+  },
+
+
+  // --------------------------------------------------------------------------
+  // QUÍMICA E CIÊNCIAS NATURAIS
+  // --------------------------------------------------------------------------
+
+  {
+    discipline: 'Química',
+    keywords: [
+      'quimica',
+      'química',
+      'quimica geral',
+      'química geral',
+      'quimica organica',
+      'química orgânica',
+      'quimica inorganica',
+      'química inorgânica',
+      'quimica analitica',
+      'química analítica',
+      'bioquimica',
+      'bioquímica'
+    ]
+  },
+
+  {
+    discipline: 'Biologia',
+    keywords: [
+      'biologia',
+      'biologia geral',
+      'biologia celular',
+      'biologia molecular',
+      'microbiologia',
+      'genetica',
+      'genética',
+      'zoologia',
+      'botanica',
+      'botânica',
+      'ecologia',
+      'ciencias biologicas',
+      'ciências biológicas'
+    ]
+  },
+
+
+  // --------------------------------------------------------------------------
+  // ARQUITETURA E CONSTRUÇÃO
+  // --------------------------------------------------------------------------
+
+  {
+    discipline: 'Arquitetura',
+    keywords: [
+      'arquitetura',
+      'arquitetura e urbanismo',
+      'arquitectura',
+      'arquitectura e urbanismo',
+      'urbanismo',
+      'projeto arquitetonico',
+      'projeto arquitetónico',
+      'desenho arquitetonico',
+      'desenho arquitectónico',
+      'planeamento urbano',
+      'planejamento urbano'
+    ]
+  },
+
+  {
+    discipline: 'Engenharia Civil',
+    keywords: [
+      'engenharia civil',
+      'construcao civil',
+      'construção civil',
+      'engenharia de construcao',
+      'engenharia de construção',
+      'estruturas',
+      'geotecnia',
+      'hidraulica',
+      'hidráulica',
+      'materiais de construcao',
+      'materiais de construção',
+      'topografia'
+    ]
+  },
+
+
+  // --------------------------------------------------------------------------
+  // AGRONOMIA E AMBIENTE
+  // --------------------------------------------------------------------------
+
+  {
+    discipline: 'Agronomia',
+    keywords: [
+      'agronomia',
+      'engenharia agronomica',
+      'engenharia agronómica',
+      'ciencias agrarias',
+      'ciências agrárias',
+      'agricultura',
+      'producao agricola',
+      'produção agrícola',
+      'producao vegetal',
+      'produção vegetal',
+      'ciencia do solo',
+      'ciência do solo'
+    ]
+  },
+
+  {
+    discipline: 'Ciências Ambientais',
+    keywords: [
+      'ciencias ambientais',
+      'ciências ambientais',
+      'engenharia ambiental',
+      'gestao ambiental',
+      'gestão ambiental',
+      'ambiente',
+      'meio ambiente',
+      'sustentabilidade',
+      'gestao de recursos naturais',
+      'gestão de recursos naturais',
+      'impacto ambiental'
+    ]
+  }
 ];
 
 const CHAT_SUGGESTIONS_BY_CATEGORY = {
   informatica: [
-    'Explica-me a diferença entre uma lista e um array',
-    'Cria um plano de estudo de 7 dias para Programação',
-    'O que são estruturas de dados e para que servem?',
-    'Ajuda-me a perceber o que é um algoritmo de ordenação',
+    'Explica-me os fundamentos de programação de forma simples',
+    'Qual a diferença entre hardware e software?',
+    'Como funciona uma rede de computadores?',
+    'Cria um plano de estudo de 7 dias para Informática',
   ],
-  direito: [
-    'Resume o Estado angolano segundo a Constituição',
-    'Explica-me a diferença entre Direito Civil e Direito Penal',
-    'O que é a separação de poderes?',
-    'Cria um plano de estudo de 7 dias para Direito Constitucional',
+
+  electricidade: [
+    'Explica-me a Lei de Ohm com exemplos práticos',
+    'Qual a diferença entre corrente contínua e alternada?',
+    'Como calcular tensão, corrente e resistência num circuito?',
+    'Cria um plano de estudo de 7 dias para Electricidade',
   ],
+
+  frio_climatizacao: [
+    'Como funciona um sistema de refrigeração?',
+    'Qual a função do compressor num sistema de frio?',
+    'Explica-me o ciclo de refrigeração de forma simples',
+    'Cria um plano de estudo de 7 dias para Frio e Climatização',
+  ],
+
+  desenhador_projectista: [
+    'O que é desenho técnico e para que serve?',
+    'Explica-me as principais normas do desenho técnico',
+    'Qual a diferença entre planta, corte e alçado?',
+    'Cria um plano de estudo de 7 dias para Desenhador Projectista',
+  ],
+
+  tecnologia_moveis: [
+    'Quais são os principais tipos de madeira usados na fabricação de móveis?',
+    'Explica as etapas de fabricação de um móvel',
+    'Quais ferramentas são utilizadas na tecnologia de móveis?',
+    'Cria um plano de estudo de 7 dias para Tecnologia de Móveis',
+  ],
+
+  mecanica: [
+    'Explica-me os princípios básicos da Mecânica',
+    'Qual a diferença entre motor a gasolina e motor a diesel?',
+    'Como funciona um sistema de transmissão automóvel?',
+    'Cria um plano de estudo de 7 dias para Mecânica',
+  ],
+
+  gestao_empresarial: [
+    'O que é gestão empresarial e qual a sua importância?',
+    'Explica-me as principais funções de um gestor',
+    'Como elaborar um plano de negócios?',
+    'Cria um plano de estudo de 7 dias para Gestão Empresarial',
+  ],
+
+  contabilidade: [
+    'Explica-me o conceito de débito e crédito',
+    'Qual a diferença entre ativo, passivo e capital próprio?',
+    'Como funciona o balanço patrimonial?',
+    'Cria um plano de estudo de 7 dias para Contabilidade',
+  ],
+
   medicina: [
     'Explica-me o sistema circulatório de forma simples',
-    'Cria um plano de estudo de 7 dias para Anatomia',
-    'Qual a diferença entre artérias e veias?',
-    'Resume as fases da mitose',
+    'Quais são os principais sistemas do corpo humano?',
+    'Qual a diferença entre vírus e bactérias?',
+    'Cria um plano de estudo de 7 dias para Medicina',
   ],
+
+  enfermagem: [
+    'Quais são os princípios básicos dos cuidados de enfermagem?',
+    'Como avaliar os sinais vitais de um paciente?',
+    'Qual a importância da higiene e segurança do paciente?',
+    'Cria um plano de estudo de 7 dias para Enfermagem',
+  ],
+
+  farmacia: [
+    'Qual a diferença entre medicamento genérico e de marca?',
+    'Como funciona a conservação e armazenamento de medicamentos?',
+    'Explica-me as principais formas farmacêuticas',
+    'Cria um plano de estudo de 7 dias para Farmácia',
+  ],
+
+  topografia: [
+    'O que é topografia e qual a sua importância?',
+    'Como funciona o nivelamento topográfico?',
+    'Para que serve uma estação total?',
+    'Cria um plano de estudo de 7 dias para Topografia',
+  ],
+
+  construcao_civil: [
+    'Quais são as principais etapas de uma construção?',
+    'Explica-me os tipos de fundações',
+    'Qual a diferença entre betão e betão armado?',
+    'Cria um plano de estudo de 7 dias para Construção Civil',
+  ],
+
+  engenharia_civil: [
+    'Quais são as principais áreas da Engenharia Civil?',
+    'Explica-me o conceito de resistência dos materiais',
+    'Como funciona uma estrutura de betão armado?',
+    'Cria um plano de estudo de 7 dias para Engenharia Civil',
+  ],
+
+  arquitectura: [
+    'Qual a diferença entre arquitectura e engenharia civil?',
+    'Quais são os elementos fundamentais de um projecto arquitectónico?',
+    'Explica-me a importância da escala no desenho arquitectónico',
+    'Cria um plano de estudo de 7 dias para Arquitectura',
+  ],
+
+  electronica: [
+    'Qual a diferença entre electrónica analógica e digital?',
+    'Explica-me como funciona um díodo',
+    'O que são resistores, capacitores e transistores?',
+    'Cria um plano de estudo de 7 dias para Electrónica',
+  ],
+
+  telecomunicacoes: [
+    'Como funciona uma rede de telecomunicações?',
+    'Qual a diferença entre fibra óptica e cabo de cobre?',
+    'Explica-me o funcionamento das redes móveis',
+    'Cria um plano de estudo de 7 dias para Telecomunicações',
+  ],
+
+  redes_computadores: [
+    'Qual a diferença entre LAN, MAN e WAN?',
+    'Explica-me o modelo OSI de forma simples',
+    'Como funciona o endereçamento IP?',
+    'Cria um plano de estudo de 7 dias para Redes de Computadores',
+  ],
+
+  programacao: [
+    'O que são variáveis, funções e estruturas condicionais?',
+    'Qual a diferença entre programação frontend e backend?',
+    'Explica-me programação orientada a objetos',
+    'Cria um plano de estudo de 7 dias para Programação',
+  ],
+
+  banco_dados: [
+    'O que é uma base de dados relacional?',
+    'Qual a diferença entre SQL e MySQL?',
+    'Explica-me chaves primárias e estrangeiras',
+    'Cria um plano de estudo de 7 dias para Banco de Dados',
+  ],
+
+  ciberseguranca: [
+    'O que é cibersegurança e por que é importante?',
+    'Qual a diferença entre vírus, malware e ransomware?',
+    'Como criar uma palavra-passe segura?',
+    'Cria um plano de estudo de 7 dias para Cibersegurança',
+  ],
+
+  inteligencia_artificial: [
+    'O que é Inteligência Artificial?',
+    'Qual a diferença entre IA, Machine Learning e Deep Learning?',
+    'Como funciona um modelo de linguagem como a IA?',
+    'Cria um plano de estudo de 7 dias para Inteligência Artificial',
+  ],
+
+  matematica: [
+    'Como resolver uma equação do segundo grau?',
+    'Explica-me funções matemáticas de forma simples',
+    'Como calcular percentagens e proporções?',
+    'Cria um plano de estudo de 7 dias para Matemática',
+  ],
+
+  fisica: [
+    'Explica-me as três leis de Newton',
+    'Qual a diferença entre velocidade e aceleração?',
+    'Como resolver problemas de movimento?',
+    'Cria um plano de estudo de 7 dias para Física',
+  ],
+
+  quimica: [
+    'Explica-me a diferença entre átomo, elemento e molécula',
+    'O que são ligações químicas?',
+    'Como balancear uma equação química?',
+    'Cria um plano de estudo de 7 dias para Química',
+  ],
+
+  biologia: [
+    'Explica-me a estrutura e função da célula',
+    'Qual a diferença entre mitose e meiose?',
+    'Como funciona o sistema respiratório?',
+    'Cria um plano de estudo de 7 dias para Biologia',
+  ],
+
+  agricultura: [
+    'Quais são os princípios básicos da agricultura?',
+    'Como preparar correctamente o solo para o cultivo?',
+    'Quais são os principais métodos de irrigação?',
+    'Cria um plano de estudo de 7 dias para Agricultura',
+  ],
+
+  agronomia: [
+    'O que é Agronomia e quais são as suas principais áreas?',
+    'Como melhorar a produtividade de uma cultura agrícola?',
+    'Explica a importância da fertilização do solo',
+    'Cria um plano de estudo de 7 dias para Agronomia',
+  ],
+
+  ambiente: [
+    'O que são alterações climáticas?',
+    'Quais são os principais problemas ambientais em Angola?',
+    'Como funciona a gestão de resíduos?',
+    'Cria um plano de estudo de 7 dias para Ciências Ambientais',
+  ],
+
   economia: [
     'Explica-me a lei da oferta e da procura',
-    'O que é inflação e como afeta o dia a dia em Angola?',
-    'Cria um plano de estudo de 7 dias para Economia',
+    'O que é inflação e como afecta Angola?',
     'Qual a diferença entre PIB e PNB?',
+    'Cria um plano de estudo de 7 dias para Economia',
   ],
-  fisica: [
-    'O que é a segunda lei de Newton?',
-    'Explica-me a diferença entre velocidade e aceleração',
-    'Cria um plano de estudo de 7 dias para Física',
-    'Resume as leis de Kepler',
+
+  gestao: [
+    'O que é administração e gestão?',
+    'Quais são as principais funções de um gestor?',
+    'Como elaborar um plano estratégico?',
+    'Cria um plano de estudo de 7 dias para Gestão',
   ],
-  matematica: [
-    'Explica-me o teorema de Bayes com um exemplo simples',
-    'Cria um plano de estudo de 7 dias para Cálculo I',
-    'Como resolver uma equação do segundo grau?',
-    'O que são limites e para que servem?',
+
+  marketing: [
+    'O que é marketing e qual a sua importância?',
+    'Qual a diferença entre marketing tradicional e digital?',
+    'Como criar uma estratégia de marketing para uma empresa?',
+    'Cria um plano de estudo de 7 dias para Marketing',
   ],
+
+  recursos_humanos: [
+    'Qual a importância da gestão de recursos humanos?',
+    'Como funciona um processo de recrutamento?',
+    'O que é avaliação de desempenho?',
+    'Cria um plano de estudo de 7 dias para Recursos Humanos',
+  ],
+
+  direito: [
+    'Explica-me a estrutura do Estado angolano',
+    'Qual a diferença entre Direito Civil e Direito Penal?',
+    'O que é a Constituição da República de Angola?',
+    'Cria um plano de estudo de 7 dias para Direito',
+  ],
+
+  contabilidade_auditoria: [
+    'O que é auditoria e qual a sua finalidade?',
+    'Qual a diferença entre contabilidade e auditoria?',
+    'Como funciona uma auditoria financeira?',
+    'Cria um plano de estudo de 7 dias para Contabilidade e Auditoria',
+  ],
+
+  turismo: [
+    'Qual a importância do turismo para a economia de Angola?',
+    'Quais são os principais tipos de turismo?',
+    'Como elaborar um roteiro turístico?',
+    'Cria um plano de estudo de 7 dias para Turismo',
+  ],
+
+  hotelaria: [
+    'Quais são os principais sectores de um hotel?',
+    'Como funciona a gestão de reservas?',
+    'Quais são as boas práticas de atendimento ao cliente?',
+    'Cria um plano de estudo de 7 dias para Hotelaria',
+  ],
+
+  educacao: [
+    'O que é pedagogia e qual a sua importância?',
+    'Quais são os principais métodos de ensino?',
+    'Como preparar um bom plano de aula?',
+    'Cria um plano de estudo de 7 dias para Educação',
+  ],
+
+  lingua_portuguesa: [
+    'Como melhorar a minha escrita em português?',
+    'Explica-me as principais classes gramaticais',
+    'Qual a diferença entre texto narrativo e dissertativo?',
+    'Cria um plano de estudo de 7 dias para Língua Portuguesa',
+  ],
+
+  ingles: [
+    'Ensina-me os principais tempos verbais em inglês',
+    'Qual a diferença entre do, does e did?',
+    'Cria um diálogo simples em inglês para eu praticar',
+    'Cria um plano de estudo de 7 dias para Inglês',
+  ],
+
+  historia: [
+    'Explica-me a história de Angola de forma resumida',
+    'Quais foram os principais acontecimentos da independência de Angola?',
+    'Explica-me o período colonial em Angola',
+    'Cria um plano de estudo de 7 dias para História',
+  ],
+
+  geografia: [
+    'Explica-me a geografia física de Angola',
+    'Quais são as principais províncias e regiões de Angola?',
+    'Explica-me os principais tipos de clima de Angola',
+    'Cria um plano de estudo de 7 dias para Geografia',
+  ],
+
+  sociologia: [
+    'O que é Sociologia e qual o seu objecto de estudo?',
+    'Explica-me os principais conceitos da Sociologia',
+    'Como a sociedade influencia o comportamento humano?',
+    'Cria um plano de estudo de 7 dias para Sociologia',
+  ],
+
+  psicologia: [
+    'O que é Psicologia e qual a sua finalidade?',
+    'Explica-me os principais processos psicológicos',
+    'Como funciona a memória e a aprendizagem?',
+    'Cria um plano de estudo de 7 dias para Psicologia',
+  ],
+
+  arquitectura: [
+    'O que é um projecto arquitectónico?',
+    'Qual a importância da escala no desenho arquitectónico?',
+    'Qual a diferença entre planta, corte e alçado?',
+    'Cria um plano de estudo de 7 dias para Arquitectura',
+  ],
+
+  mecanica_industrial: [
+    'O que é manutenção industrial?',
+    'Explica-me o funcionamento de máquinas industriais',
+    'Qual a diferença entre manutenção preventiva e correctiva?',
+    'Cria um plano de estudo de 7 dias para Mecânica Industrial',
+  ],
+
+  soldadura: [
+    'Quais são os principais processos de soldadura?',
+    'Qual a diferença entre soldadura MIG, MAG e TIG?',
+    'Quais são os equipamentos de segurança usados na soldadura?',
+    'Cria um plano de estudo de 7 dias para Soldadura',
+  ],
+
+  energia_electrica: [
+    'Como funciona a produção de energia eléctrica?',
+    'Qual a diferença entre geração, transmissão e distribuição?',
+    'Como funciona um transformador eléctrico?',
+    'Cria um plano de estudo de 7 dias para Energia Eléctrica',
+  ],
+
+  transportes: [
+    'Quais são os principais sistemas de transporte?',
+    'Como funciona a logística de transporte?',
+    'Qual a importância dos transportes para a economia de Angola?',
+    'Cria um plano de estudo de 7 dias para Transportes',
+  ],
+
+  logistica: [
+    'O que é logística e qual a sua importância?',
+    'Como funciona a gestão de stocks?',
+    'Qual a diferença entre logística e cadeia de abastecimento?',
+    'Cria um plano de estudo de 7 dias para Logística',
+  ],
+
   generico: [
-    'Explica-me o teorema de Bayes com um exemplo simples',
-    'Resume o Estado angolano segundo a Constituição',
-    'Cria um plano de estudo de 7 dias para a minha área',
-    'Dá-me dicas para memorizar melhor a matéria',
+    'Explica-me um assunto da minha área de estudo de forma simples',
+    'Ajuda-me a preparar uma matéria para a próxima prova',
+    'Cria um plano de estudo de 7 dias para o meu curso',
+    'Dá-me técnicas para estudar e memorizar melhor',
   ],
 };
 
@@ -2151,7 +3258,7 @@ function initOnboarding() {
       goToStep(4);
       runLoadingSequence();
     } catch (err) {
-      step3Error.textContent = 'Não foi possível ligar ao servidor. Verifica se a backend está a correr.';
+      step3Error.textContent = 'Não foi possível ligar ao servidor. Verifica se estás ligado à internet.';
       step3Error.hidden = false;
       step3Next.disabled = false;
     }
