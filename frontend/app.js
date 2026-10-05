@@ -3322,3 +3322,29 @@ function initOnboarding() {
     goToStep(1);
   };
 }
+
+
+
+document.addEventListener('click', (event) => {
+  const button = event.target.closest('.toggle-password');
+
+  if (!button) return;
+
+  const input = document.getElementById(button.dataset.target);
+
+  if (!input) return;
+
+  if (input.type === 'password') {
+    input.type = 'text';
+
+    button.textContent = '🙈';
+    button.setAttribute('aria-label', 'Ocultar palavra-passe');
+    button.setAttribute('title', 'Ocultar palavra-passe');
+  } else {
+    input.type = 'password';
+
+    button.textContent = '👁';
+    button.setAttribute('aria-label', 'Mostrar palavra-passe');
+    button.setAttribute('title', 'Mostrar palavra-passe');
+  }
+});

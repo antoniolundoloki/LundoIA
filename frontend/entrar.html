@@ -131,16 +131,36 @@
         <form id="signup-form" novalidate>
           <div class="field">
             <label for="signup-name">Nome completo</label>
-            <input type="text" id="signup-name" name="name" placeholder="João Domingos" required>
+            <input type="text" id="signup-name" name="name" placeholder="Samuel António Lundoloki" required>
           </div>
           <div class="field">
             <label for="signup-email">Email</label>
             <input type="email" id="signup-email" name="email" placeholder="tu@exemplo.ao" required>
           </div>
           <div class="field">
-            <label for="signup-password">Palavra-passe</label>
-            <input type="password" id="signup-password" name="password" placeholder="••••••••" required minlength="8">
+          <label for="signup-password">Palavra-passe</label>
+
+          <div class="password-wrapper">
+            <input
+              type="password"
+              id="signup-password"
+              name="password"
+              placeholder="••••••••"
+              required
+              minlength="8"
+            >
+
+            <button
+              type="button"
+              class="toggle-password"
+              data-target="signup-password"
+              aria-label="Mostrar palavra-passe"
+              title="Mostrar palavra-passe"
+            >
+              👁
+            </button>
           </div>
+        </div>
 
           <button type="submit" class="btn--gradient">Criar conta</button>
           <p class="form-note" aria-live="polite"></p>
@@ -174,9 +194,29 @@
 
         <form id="reset-password-form" novalidate>
           <div class="field">
-            <label for="reset-password-input">Nova palavra-passe</label>
-            <input type="password" id="reset-password-input" name="password" placeholder="••••••••" required minlength="8">
-          </div>
+        <label for="reset-password-input">Nova palavra-passe</label>
+
+        <div class="password-wrapper">
+        <input
+          type="password"
+          id="reset-password-input"
+          name="password"
+          placeholder="••••••••"
+          required
+          minlength="8"
+        >
+
+        <button
+          type="button"
+          class="toggle-password"
+          data-target="reset-password-input"
+          aria-label="Mostrar palavra-passe"
+          title="Mostrar palavra-passe"
+        >
+          👁
+        </button>
+        </div>
+        </div>
 
           <button type="submit" class="btn--gradient">Guardar nova password</button>
           <p class="form-note" aria-live="polite"></p>
