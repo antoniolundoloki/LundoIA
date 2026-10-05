@@ -1319,29 +1319,65 @@ p {
 
 
 /*  estilo da página Sobre*/
-
-.eye-icon {
-  width: 19px;
-  height: 19px;
+.password-input {
+  position: relative;
+  width: 100%;
 }
 
-.eye-closed {
-  display: none;
+.password-input input {
+  width: 100%;
+  padding-right: 48px;
 }
 
-.toggle-password:hover {
+.password-toggle {
+  position: absolute;
+  top: 50%;
+  right: 12px;
+
+  width: 32px;
+  height: 32px;
+
+  transform: translateY(-50%);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+  border: 0;
+  border-radius: 8px;
+
+  background: transparent;
+  color: #8a8a8a;
+
+  cursor: pointer;
+
+  transition:
+    color 0.2s ease,
+    background 0.2s ease,
+    transform 0.15s ease;
+}
+
+.password-toggle:hover {
   color: #d97706;
+  background: rgba(217, 119, 6, 0.08);
 }
 
-.toggle-password:active {
-  transform: translateY(-50%) scale(0.92);
+.password-toggle:active {
+  transform: translateY(-50%) scale(0.94);
 }
 
-.eye-icon {
+.password-toggle:focus-visible {
+  outline: 2px solid #d97706;
+  outline-offset: 2px;
+}
+
+.password-eye {
   width: 19px;
   height: 19px;
+  pointer-events: none;
 }
 
-.eye-closed {
+.password-eye--closed {
   display: none;
 }

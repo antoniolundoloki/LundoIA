@@ -3326,33 +3326,50 @@ function initOnboarding() {
 
 
 
-document.addEventListener('click', (event) => {
-  const button = event.target.closest('.toggle-password');
 
-  if (!button) return;
 
-  const input = document.getElementById(button.dataset.target);
 
-  if (!input) return;
 
-  const eyeOpen = button.querySelector('.eye-open');
-  const eyeClosed = button.querySelector('.eye-closed');
+function setupPasswordToggle(inputId, buttonId) {
+  const passwordInput = document.getElementById(inputId);
+  const passwordToggle = document.getElementById(buttonId);
 
-  if (input.type === 'password') {
-    input.type = 'text';
+  if (!passwordInput || !passwordToggle) return;
 
-    eyeOpen.style.display = 'none';
-    eyeClosed.style.display = 'block';
+  const eyeOpen = passwordToggle.querySelector('.password-eye--open');
+  const eyeClosed = passwordToggle.querySelector('.password-eye--closed');
 
-    button.setAttribute('aria-label', 'Ocultar palavra-passe');
-    button.setAttribute('title', 'Ocultar palavra-passe');
-  } else {
-    input.type = 'password';
+  passwordToggle.addEventListener('click', () => {
+    const isHidden = passwordInput.type === 'password';
 
-    eyeOpen.style.display = 'block';
-    eyeClosed.style.display = 'none';
+    passwordInput.type = isHidden ? 'text' : 'password';
 
-    button.setAttribute('aria-label', 'Mostrar palavra-passe');
-    button.setAttribute('title', 'Mostrar palavra-passe');
-  }
-});
+    eyeOpen.style.display = isHidden ? 'none' : 'block';
+    eyeClosed.style.display = isHidden ? 'block' : 'none';
+
+    passwordToggle.setAttribute(
+      'aria-label',
+      isHidden ? 'Ocultar palavra-passe' : 'Mostrar palavra-passe'
+    );
+
+    passwordToggle.setAttribute(
+      'title',
+      isHidden ? 'Ocultar palavra-passe' : 'Mostrar palavra-passe'
+    );
+  });
+}
+
+setupPasswordToggle(
+  'login-password',
+  'login-password-toggle'
+);
+
+setupPasswordToggle(
+  'signup-password',
+  'signup-password-toggle'
+);
+
+setupPasswordToggle(
+  'reset-password-input',
+  'reset-password-toggle'
+);
