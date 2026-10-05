@@ -16,31 +16,15 @@ async function listModules(req, res, next) {
 // para pré-selecionar na Tela 3 do onboarding.
 async function suggestModules(req, res, next) {
   try {
-    const matchText = [req.query.course, req.query.area]
-      .filter(Boolean)
-      .join(' ');
-
+    const matchText = [req.query.course, req.query.area].filter(Boolean).join(' ');
     const category = getCategoryFor(matchText);
 
-    // Busca os módulos específicos do curso
-    // + os módulos gerais, como Matemática e Física.
     const [rows] = await pool.query(
-      `SELECT id, name, category
-       FROM modules
-       WHERE category IN (:category, 'geral')
-       ORDER BY
-         CASE
-           WHEN category = 'geral' THEN 0
-           ELSE 1
-         END,
-         name`,
+      'SELECT id, name, category FROM modules WHERE category = :category ORDER BY name',
       { category }
     );
 
-    res.json({
-      category,
-      modules: rows
-    });
+    res.json({ category, modules: rows });
   } catch (err) {
     next(err);
   }
