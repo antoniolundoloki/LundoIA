@@ -112,40 +112,6 @@ CREATE TABLE IF NOT EXISTS chat_messages (
 
 -- LundoIA — catálogo inicial de módulos (mesmas listas já usadas no onboarding do frontend)
 
-INSERT IGNORE INTO modules (name, category) VALUES
-  -- Informática / Engenharia Informática
-  ('Programação', 'informatica'),
-  ('Redes', 'informatica'),
-  ('Banco de Dados', 'informatica'),
-  ('Hardware', 'informatica'),
-  ('Sistemas Operativos', 'informatica'),
-  ('Desenvolvimento Web', 'informatica'),
-  ('Inteligência Artificial', 'informatica'),
-  ('Segurança Informática', 'informatica'),
-  ('Computação em Nuvem', 'informatica'),
-
-  -- Direito
-  ('Introdução ao Direito', 'direito'),
-  ('Direito Civil', 'direito'),
-  ('Direito Penal', 'direito'),
-  ('Direito Constitucional', 'direito'),
-  ('Direito Administrativo', 'direito'),
-  ('Direito Internacional', 'direito'),
-
-  -- Medicina / Enfermagem
-  ('Anatomia', 'medicina'),
-  ('Fisiologia', 'medicina'),
-  ('Bioquímica', 'medicina'),
-  ('Farmacologia', 'medicina'),
-  ('Semiologia', 'medicina'),
-  ('Microbiologia', 'medicina'),
-
-  -- Genérico (fallback para qualquer outro curso/área)
-  ('Fundamentos da área', 'generico'),
-  ('Exercícios práticos', 'generico'),
-  ('Resumos guiados', 'generico'),
-  ('Preparação para provas', 'generico'),
-  ('Projetos práticos', 'generico');
 
 -- LundoIA — catálogo inicial da Biblioteca (mesmas categorias dos módulos)
 
@@ -167,3 +133,227 @@ INSERT IGNORE INTO library_resources (title, category, resource_type, pages, fil
   ('Matemática Financeira Aplicada', 'matematica', 'sebenta', 3, 'matematica-financeira.pdf'),
   ('Guia de Métodos de Estudo', 'generico', 'sebenta', 3, 'guia-metodos-estudo.pdf');
 
+-- Guias/recursos da Biblioteca da LundoIA
+-- Conteúdo servido localmente.
+-- pages = NULL porque o número de páginas não está disponível na lista apresentada.
+
+INSERT IGNORE INTO library_resources
+(title, category, resource_type, pages, file_name)
+VALUES
+
+-- INFORMÁTICA
+('A Estrutura do Computador',
+ 'informatica',
+ 'livro',
+ NULL,
+ 'a-estrutura-do-computador.pdf'),
+
+('Desenvolvimento Web no lado cliente - JavaScript',
+ 'informatica',
+ 'livro',
+ NULL,
+ 'desenvolvimento-web-no-lado-cliente-javascript.pdf'),
+
+('Estruturação de páginas usando HTML, CSS e Javascript',
+ 'informatica',
+ 'livro',
+ NULL,
+ 'estruturacao-de-paginas-usando-html-css-javascript.pdf'),
+
+('Introdução à programação com Python',
+ 'informatica',
+ 'livro',
+ NULL,
+ 'introducao-a-programacao-com-python.pdf'),
+
+('Introdução à Programação em C++',
+ 'informatica',
+ 'livro',
+ NULL,
+ 'introducao-a-programacao-em-cpp.pdf'),
+
+('Introdução ao HTML',
+ 'informatica',
+ 'livro',
+ NULL,
+ 'introducao-ao-html.pdf'),
+
+('Introdução ao Universo da Programação com Python',
+ 'informatica',
+ 'livro',
+ NULL,
+ 'introducao-ao-universo-da-programacao-com-python.pdf'),
+
+('Introdução Programação',
+ 'informatica',
+ 'livro',
+ NULL,
+ 'introducao-programacao.pdf'),
+
+('Java Apostila',
+ 'informatica',
+ 'livro',
+ NULL,
+ 'java-apostila.pdf'),
+
+('Linux',
+ 'informatica',
+ 'livro',
+ NULL,
+ 'linux.pdf'),
+
+('Manual Prático de Hardware',
+ 'informatica',
+ 'livro',
+ NULL,
+ 'manual-pratico-de-hardware.pdf'),
+
+('Manutenção e montagem de computadores',
+ 'informatica',
+ 'livro',
+ NULL,
+ 'manutencao-e-montagem-de-computadores.pdf'),
+
+('Montagem do Computador',
+ 'informatica',
+ 'livro',
+ NULL,
+ 'montagem-do-computador.pdf'),
+
+('Placa Mãe',
+ 'informatica',
+ 'livro',
+ NULL,
+ 'placa-mae.pdf'),
+
+
+-- CONTABILIDADE
+('Contabilidade Básica',
+ 'contabilidade',
+ 'livro',
+ NULL,
+ 'contabilidade-basica.pdf'),
+
+('Contabilidade Geral',
+ 'contabilidade',
+ 'livro',
+ NULL,
+ 'contabilidade-geral.pdf'),
+
+
+-- MATEMÁTICA
+('Derivadas',
+ 'matematica',
+ 'livro',
+ NULL,
+ 'derivadas.pdf'),
+
+('Grande Book Matemática',
+ 'matematica',
+ 'livro',
+ NULL,
+ 'grande-book-matematica.pdf'),
+
+('Limites e derivadas',
+ 'matematica',
+ 'livro',
+ NULL,
+ 'limites-e-derivadas.pdf'),
+
+('Matemática - Mestre Nguala',
+ 'matematica',
+ 'livro',
+ NULL,
+ 'matematica-mestre-nguala.pdf'),
+
+('Matemática Aplicada Vol I',
+ 'matematica',
+ 'livro',
+ NULL,
+ 'matematica-aplicada-vol-i.pdf'),
+
+('Matemática Benigno Filho',
+ 'matematica',
+ 'livro',
+ NULL,
+ 'matematica-benigno-filho.pdf'),
+
+('Matemática Financeira',
+ 'matematica',
+ 'livro',
+ NULL,
+ 'matematica-financeira.pdf'),
+
+
+-- ELECTRÓNICA
+('Electrotecnia',
+ 'electronica',
+ 'livro',
+ NULL,
+ 'electrotecnia.pdf'),
+
+('Electrónica Básica',
+ 'electronica',
+ 'livro',
+ NULL,
+ 'electronica-basica.pdf'),
+
+('Electrónica Ilustrada',
+ 'electronica',
+ 'livro',
+ NULL,
+ 'electronica-ilustrada.pdf'),
+
+('Eletronica',
+ 'electronica',
+ 'livro',
+ NULL,
+ 'eletronica.pdf'),
+
+
+-- ELECTRICIDADE
+('Eletricidade',
+ 'electricidade',
+ 'livro',
+ NULL,
+ 'eletricidade.pdf'),
+
+
+-- FÍSICA
+('Física 10ª e 11ª classe',
+ 'fisica',
+ 'livro',
+ NULL,
+ 'fisica-10-e-11-classe.pdf'),
+
+('Física 12ª Classe da Reforma Educativa',
+ 'fisica',
+ 'livro',
+ NULL,
+ 'fisica-12-classe-da-reforma-educativa.pdf'),
+
+
+-- MECÂNICA
+('Hidráulica',
+ 'mecanica',
+ 'livro',
+ NULL,
+ 'hidraulica.pdf'),
+
+('Mecânica Calor Ondas',
+ 'fisica',
+ 'livro',
+ NULL,
+ 'mecanica-calor-ondas.pdf'),
+
+('Mecânica dos Fluidos',
+ 'mecanica',
+ 'livro',
+ NULL,
+ 'mecanica-dos-fluidos.pdf'),
+
+('Mecânica Ramalho',
+ 'mecanica',
+ 'livro',
+ NULL,
+ 'mecanica-ramalho.pdf');

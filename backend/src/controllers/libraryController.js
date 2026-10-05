@@ -42,27 +42,67 @@ async function getLibrary(req, res, next) {
 
 // GET /api/library/:id/file — serve um recurso alojado localmente (só os que
 // têm file_name preenchido; os externos usam source_url em vez disto).
+// GET /api/library/:id/file
+// Abre ou baixa um PDF armazenado em src/library-files/
 async function getLibraryFile(req, res, next) {
   try {
     const { id } = req.params;
+    const mode = req.query.mode === 'download' ? 'download' : 'inline';
+
     const [rows] = await pool.query(
       'SELECT title, file_name FROM library_resources WHERE id = :id',
       { id }
     );
+
     const resource = rows[0];
 
     if (!resource || !resource.file_name) {
-      return res.status(404).json({ error: 'Este recurso não tem ficheiro local — usa o link da fonte.' });
+      return res.status(404).json({
+        error: 'Este recurso não possui um ficheiro local.'
+      });
     }
 
-    const filePath = path.join(LIBRARY_FILES_DIR, resource.file_name);
+    // Impede caminhos como ../../outro-arquivo
+    const safeFileName = path.basename(resource.file_name);
+
+    const filePath = path.join(LIBRARY_FILES_DIR, safeFileName);
+
     if (!fs.existsSync(filePath)) {
-      return res.status(404).json({ error: 'Ficheiro não encontrado no servidor.' });
+      console.error(`Ficheiro não encontrado: ${filePath}`);
+
+      return res.status(404).json({
+        error: 'Ficheiro não encontrado no servidor.',
+        file: safeFileName
+      });
     }
 
-    const disposition = req.query.mode === 'download' ? 'attachment' : 'inline';
-    res.setHeader('Content-Disposition', `${disposition}; filename="${resource.file_name}"`);
-    res.sendFile(filePath);
+    // Garante que o navegador reconhece o ficheiro como PDF
+    res.setHeader('Content-Type', 'application/pdf');
+
+    if (mode === 'download') {
+      return res.download(
+        filePath,
+        safeFileName,
+        {
+          headers: {
+            'Content-Type': 'application/pdf'
+          }
+        },
+        (err) => {
+          if (err && !res.headersSent) {
+            next(err);
+          }
+        }
+      );
+    }
+
+    // mode=inline → abre o PDF no navegador
+    res.setHeader(
+      'Content-Disposition',
+      `inline; filename="${safeFileName}"`
+    );
+
+    return res.sendFile(filePath);
   } catch (err) {
     next(err);
   }
