@@ -954,74 +954,22 @@ function renderLibraryCard(resource) {
 // Abre um ficheiro nosso (autenticado) num separador novo, ou faz o download,
 // buscando-o com o token de acesso e criando um URL temporário local.
 async function openLibraryFile(id, mode, fileName) {
-  try {
-    console.log('[Biblioteca] ID:', id);
-    console.log('[Biblioteca] Modo:', mode);
-    console.log('[Biblioteca] Ficheiro:', fileName);
+  const res = await apiFetch(`/library/${id}/file?mode=${mode}`);
+  if (!res.ok) throw new Error('Não foi possível obter o ficheiro.');
+  const blob = await res.blob();
+  const blobUrl = window.URL.createObjectURL(blob);
 
-    const res = await apiFetch(`/library/${id}/file?mode=${mode}`);
-
-    console.log('[Biblioteca] Status:', res.status);
-    console.log('[Biblioteca] Content-Type:', res.headers.get('content-type'));
-
-    if (!res.ok) {
-      let errorMessage = 'Não foi possível obter o ficheiro.';
-
-      try {
-        const errorData = await res.json();
-        errorMessage = errorData.error || errorMessage;
-        console.error('[Biblioteca] Erro do servidor:', errorData);
-      } catch {
-        console.error('[Biblioteca] Resposta do servidor não é JSON.');
-      }
-
-      throw new Error(errorMessage);
-    }
-
-    const blob = await res.blob();
-
-    console.log('[Biblioteca] Blob recebido:', {
-      type: blob.type,
-      size: blob.size
-    });
-
-    if (!blob.size) {
-      throw new Error('O servidor devolveu um ficheiro vazio.');
-    }
-
-    const blobUrl = URL.createObjectURL(blob);
-
-    if (mode === 'download') {
-      const link = document.createElement('a');
-
-      link.href = blobUrl;
-      link.download = fileName || 'documento.pdf';
-
-      document.body.appendChild(link);
-      link.click();
-      link.remove();
-    } else {
-      // Abre o PDF numa nova aba
-      const newWindow = window.open('', '_blank');
-
-      if (!newWindow) {
-        // Se o navegador bloquear a nova aba,
-        // abre o PDF na própria página.
-        window.location.href = blobUrl;
-      } else {
-        newWindow.location.href = blobUrl;
-      }
-    }
-
-    setTimeout(() => {
-      URL.revokeObjectURL(blobUrl);
-    }, 60000);
-
-  } catch (error) {
-    console.error('[Biblioteca] Falha ao abrir ficheiro:', error);
-
-    alert(error.message || 'Não foi possível abrir o ficheiro.');
+  if (mode === 'download') {
+    const link = document.createElement('a');
+    link.href = blobUrl;
+    link.download = fileName || 'documento.pdf';
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+  } else {
+    window.open(blobUrl, '_blank');
   }
+  window.setTimeout(() => window.URL.revokeObjectURL(blobUrl), 30000);
 }
 
 function bindLibraryCardActions(grid) {
