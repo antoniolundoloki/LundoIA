@@ -1,23 +1,18 @@
 const pool = require('../config/db');
 const { getCategoryFor } = require('../utils/categoryMatching');
 
-// GET /api/modules — catálogo completo
-// (para a área de Definições, ex: adicionar módulo)
+// GET /api/modules — catálogo completo (para a área de Definições, ex: adicionar módulo)
 async function listModules(req, res, next) {
   try {
-    const [rows] = await pool.query(
-      'SELECT id, name, category FROM modules ORDER BY category, name'
-    );
-
+    const [rows] = await pool.query('SELECT id, name, category FROM modules ORDER BY category, name');
     res.json({ modules: rows });
   } catch (err) {
     next(err);
   }
 }
 
-
 // GET /api/modules/suggestions?course=Engenharia Informática&area=Informática
-// Devolve os módulos gerais + os módulos específicos do curso,
+// Devolve os módulos da categoria correspondente ao curso/área indicados,
 // para pré-selecionar na Tela 3 do onboarding.
 async function suggestModules(req, res, next) {
   try {
@@ -27,7 +22,8 @@ async function suggestModules(req, res, next) {
 
     const category = getCategoryFor(matchText);
 
-    // Módulos gerais + módulos específicos do curso
+    // Busca os módulos específicos do curso
+    // + os módulos gerais, como Matemática e Física.
     const [rows] = await pool.query(
       `SELECT id, name, category
        FROM modules
@@ -50,9 +46,7 @@ async function suggestModules(req, res, next) {
   }
 }
 
-
-// PATCH /api/modules/:id
-// Ativar/desativar um módulo ou atualizar progresso
+// PATCH /api/modules/:id — ativar/desativar um módulo ou atualizar progresso
 async function updateUserModule(req, res, next) {
   try {
     const userId = req.userId;
@@ -66,8 +60,7 @@ async function updateUserModule(req, res, next) {
 
     if (existing.length === 0) {
       await pool.query(
-        `INSERT INTO user_modules
-         (user_id, module_id, is_active, progress_percent)
+        `INSERT INTO user_modules (user_id, module_id, is_active, progress_percent)
          VALUES (:userId, :moduleId, :isActive, :progressPercent)`,
         {
           userId,
@@ -81,13 +74,8 @@ async function updateUserModule(req, res, next) {
         `UPDATE user_modules
          SET is_active = COALESCE(:isActive, is_active),
              progress_percent = COALESCE(:progressPercent, progress_percent),
-             last_studied_at = IF(
-               :progressPercent IS NOT NULL,
-               NOW(),
-               last_studied_at
-             )
-         WHERE user_id = :userId
-           AND module_id = :moduleId`,
+             last_studied_at = IF(:progressPercent IS NOT NULL, NOW(), last_studied_at)
+         WHERE user_id = :userId AND module_id = :moduleId`,
         {
           userId,
           moduleId,
@@ -103,8 +91,4 @@ async function updateUserModule(req, res, next) {
   }
 }
 
-module.exports = {
-  listModules,
-  suggestModules,
-  updateUserModule
-};
+module.exports = { listModules, suggestModules, updateUserModule };
