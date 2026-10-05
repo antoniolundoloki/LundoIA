@@ -3325,6 +3325,7 @@ function initOnboarding() {
 
 
 
+
 document.addEventListener('click', (event) => {
   const button = event.target.closest('.toggle-password');
 
@@ -3334,16 +3335,23 @@ document.addEventListener('click', (event) => {
 
   if (!input) return;
 
+  const eyeOpen = button.querySelector('.eye-open');
+  const eyeClosed = button.querySelector('.eye-closed');
+
   if (input.type === 'password') {
     input.type = 'text';
 
-    button.textContent = '🙈';
+    eyeOpen.style.display = 'none';
+    eyeClosed.style.display = 'block';
+
     button.setAttribute('aria-label', 'Ocultar palavra-passe');
     button.setAttribute('title', 'Ocultar palavra-passe');
   } else {
     input.type = 'password';
 
-    button.textContent = '👁';
+    eyeOpen.style.display = 'block';
+    eyeClosed.style.display = 'none';
+
     button.setAttribute('aria-label', 'Mostrar palavra-passe');
     button.setAttribute('title', 'Mostrar palavra-passe');
   }
