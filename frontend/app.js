@@ -951,6 +951,36 @@ function renderLibraryCard(resource) {
   return card;
 }
 
+
+function setupLibrarySearch() {
+  const searchInput = document.getElementById('library-search');
+
+  if (!searchInput) {
+    console.warn('[Biblioteca] Campo de pesquisa não encontrado.');
+    return;
+  }
+
+  searchInput.addEventListener('input', () => {
+    const searchTerm = searchInput.value
+      .trim()
+      .toLowerCase();
+
+    const cards = document.querySelectorAll('.library-card');
+
+    cards.forEach(card => {
+      const title = (card.dataset.title || '').toLowerCase();
+      const meta = (card.dataset.meta || '').toLowerCase();
+
+      const matches =
+        title.includes(searchTerm) ||
+        meta.includes(searchTerm);
+
+      card.style.display = matches ? '' : 'none';
+    });
+  });
+}
+
+
 // Abre um ficheiro nosso (autenticado) num separador novo, ou faz o download,
 // buscando-o com o token de acesso e criando um URL temporário local.
 async function openLibraryFile(id, mode, fileName) {
@@ -1167,6 +1197,7 @@ function initLibrary() {
   }
 
   searchInput?.addEventListener('input', applyFilters);
+  setupLibrarySearch();
 }
 // ----------------------------------------------------------------------------
 // Definições — lê/grava as preferências reais na backend (GET/PATCH /api/settings)
