@@ -137,223 +137,273 @@ INSERT IGNORE INTO library_resources (title, category, resource_type, pages, fil
 -- Conteúdo servido localmente.
 -- pages = NULL porque o número de páginas não está disponível na lista apresentada.
 
+-- ============================================================
+-- LIVROS DA BIBLIOTECA — LundoIA
+-- ============================================================
+
 INSERT IGNORE INTO library_resources
 (title, category, resource_type, pages, file_name)
 VALUES
 
+-- ============================================================
 -- INFORMÁTICA
+-- ============================================================
+
 ('A Estrutura do Computador',
  'informatica',
  'livro',
  NULL,
- 'a-estrutura-do-computador.pdf'),
+ 'A Estrutura do Computador.pdf'),
 
 ('Desenvolvimento Web no lado cliente - JavaScript',
  'informatica',
  'livro',
  NULL,
- 'desenvolvimento-web-no-lado-cliente-javascript.pdf'),
+ 'Desenvolvimento Web no lado cliente - JavaScript.pdf'),
 
 ('Estruturação de páginas usando HTML, CSS e Javascript',
  'informatica',
  'livro',
  NULL,
- 'estruturacao-de-paginas-usando-html-css-javascript.pdf'),
+ 'Estruturação de páginas usando HTML, CSS e Javascript.pdf'),
 
 ('Introdução à programação com Python',
  'informatica',
  'livro',
  NULL,
- 'introducao-a-programacao-com-python.pdf'),
+ 'Introdução à programação com Python.pdf'),
 
 ('Introdução à Programação em C++',
  'informatica',
  'livro',
  NULL,
- 'introducao-a-programacao-em-cpp.pdf'),
+ 'Introdução à Programação em C++.pdf'),
 
 ('Introdução ao HTML',
  'informatica',
  'livro',
  NULL,
- 'introducao-ao-html.pdf'),
+ 'Introdução ao HTML.pdf'),
 
 ('Introdução ao Universo da Programação com Python',
  'informatica',
  'livro',
  NULL,
- 'introducao-ao-universo-da-programacao-com-python.pdf'),
+ 'Introdução ao Universo da Programação com Python.pdf'),
 
 ('Introdução Programação',
  'informatica',
  'livro',
  NULL,
- 'introducao-programacao.pdf'),
+ 'Introdução Programação.pdf'),
 
 ('Java Apostila',
  'informatica',
  'livro',
  NULL,
- 'java-apostila.pdf'),
+ 'Java Apostila.pdf'),
 
 ('Linux',
  'informatica',
  'livro',
  NULL,
- 'linux.pdf'),
+ 'Linux.pdf'),
 
 ('Manual Prático de Hardware',
  'informatica',
  'livro',
  NULL,
- 'manual-pratico-de-hardware.pdf'),
+ 'Manual Prático de Hardware.pdf'),
 
 ('Manutenção e montagem de computadores',
  'informatica',
  'livro',
  NULL,
- 'manutencao-e-montagem-de-computadores.pdf'),
+ 'Manutenção e montagem de computadores.pdf'),
 
 ('Montagem do Computador',
  'informatica',
  'livro',
  NULL,
- 'montagem-do-computador.pdf'),
+ 'Montagem do Computador.pdf'),
 
 ('Placa Mãe',
  'informatica',
  'livro',
  NULL,
- 'placa-mae.pdf'),
+ 'Placa Mãe.pdf'),
 
+('Redes de Computadores',
+ 'informatica',
+ 'livro',
+ NULL,
+ 'Redes de Computadores.pdf'),
 
+ ('Tudo sobre PC',
+ 'informatica',
+ 'livro',
+ NULL,
+ 'Tudo sobre PC.pdf'),
+-- ============================================================
 -- CONTABILIDADE
+-- ============================================================
+
 ('Contabilidade Básica',
  'contabilidade',
  'livro',
  NULL,
- 'contabilidade-basica.pdf'),
+ 'Contabilidade Básica.pdf'),
 
 ('Contabilidade Geral',
  'contabilidade',
  'livro',
  NULL,
- 'contabilidade-geral.pdf'),
+ 'Contabilidade Geral.pdf'),
 
 
+-- ============================================================
 -- MATEMÁTICA
+-- ============================================================
+
 ('Derivadas',
  'matematica',
  'livro',
  NULL,
- 'derivadas.pdf'),
+ 'Derivadas.pdf'),
 
 ('Grande Book Matemática',
  'matematica',
  'livro',
  NULL,
- 'grande-book-matematica.pdf'),
+ 'Grande Book Matemática.pdf'),
 
 ('Limites e derivadas',
  'matematica',
  'livro',
  NULL,
- 'limites-e-derivadas.pdf'),
+ 'Limites e derivadas.pdf'),
 
 ('Matemática - Mestre Nguala',
  'matematica',
  'livro',
  NULL,
- 'matematica-mestre-nguala.pdf'),
+ 'Matemática - Mestre Nguala.pdf'),
 
 ('Matemática Aplicada Vol I',
  'matematica',
  'livro',
  NULL,
- 'matematica-aplicada-vol-i.pdf'),
+ 'Matemática Aplicada Vol I.pdf'),
 
 ('Matemática Benigno Filho',
  'matematica',
  'livro',
  NULL,
- 'matematica-benigno-filho.pdf'),
+ 'Matemática Benigno Filho.pdf'),
 
 ('Matemática Financeira',
  'matematica',
  'livro',
  NULL,
- 'matematica-financeira.pdf'),
+ 'Matemática Financeira.pdf'),
 
 
+-- ============================================================
 -- ELECTRÓNICA
+-- ============================================================
+
 ('Electrotecnia',
  'electronica',
  'livro',
  NULL,
- 'electrotecnia.pdf'),
+ 'Electrotecnia.pdf'),
 
 ('Electrónica Básica',
  'electronica',
  'livro',
  NULL,
- 'electronica-basica.pdf'),
+ 'Electrónica Básica.pdf'),
 
 ('Electrónica Ilustrada',
  'electronica',
  'livro',
  NULL,
- 'electronica-ilustrada.pdf'),
+ 'Electrónica Ilustrada.pdf'),
 
 ('Eletronica',
  'electronica',
  'livro',
  NULL,
- 'eletronica.pdf'),
+ 'Eletronica.pdf'),
 
 
+-- ============================================================
 -- ELECTRICIDADE
+-- ============================================================
+
 ('Eletricidade',
  'electricidade',
  'livro',
  NULL,
- 'eletricidade.pdf'),
+ 'Eletricidade.pdf'),
 
 
+-- ============================================================
 -- FÍSICA
+-- ============================================================
+
 ('Física 10ª e 11ª classe',
  'fisica',
  'livro',
  NULL,
- 'fisica-10-e-11-classe.pdf'),
+ 'Física 10ª e 11ª classe.pdf'),
 
 ('Física 12ª Classe da Reforma Educativa',
  'fisica',
  'livro',
  NULL,
- 'fisica-12-classe-da-reforma-educativa.pdf'),
-
-
--- MECÂNICA
-('Hidráulica',
- 'mecanica',
- 'livro',
- NULL,
- 'hidraulica.pdf'),
+ 'Física 12ª Classe da Reforma Educativa.pdf'),
 
 ('Mecânica Calor Ondas',
  'fisica',
  'livro',
  NULL,
- 'mecanica-calor-ondas.pdf'),
+ 'Mecânica Calor Ondas.pdf'),
+
+
+-- ============================================================
+-- MECÂNICA
+-- ============================================================
+
+('Hidráulica',
+ 'mecanica',
+ 'livro',
+ NULL,
+ 'Hidráulica.pdf'),
 
 ('Mecânica dos Fluidos',
  'mecanica',
  'livro',
  NULL,
- 'mecanica-dos-fluidos.pdf'),
+ 'Mecânica dos Fluidos.pdf'),
 
 ('Mecânica Ramalho',
  'mecanica',
  'livro',
  NULL,
- 'mecanica-ramalho.pdf');
+ 'Mecânica Ramalho.pdf');
+
+-- ============================================================
+-- VERIFICAR OS LIVROS CADASTRADOS
+-- ============================================================
+
+SELECT
+    id,
+    title,
+    category,
+    resource_type,
+    pages,
+    file_name
+FROM library_resources
+WHERE resource_type = 'livro'
+ORDER BY title;
