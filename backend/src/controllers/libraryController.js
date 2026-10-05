@@ -16,25 +16,35 @@ async function getLibrary(req, res, next) {
       'SELECT course, area FROM user_profiles WHERE user_id = :userId',
       { userId }
     );
+
     const profile = profileRows[0];
-    const matchText = profile ? [profile.course, profile.area].filter(Boolean).join(' ') : '';
+
+    const matchText = profile
+      ? [profile.course, profile.area].filter(Boolean).join(' ')
+      : '';
+
     const category = getCategoryFor(matchText);
 
+    // Busca os livros da área do estudante
+    // E também os livros gerais (Matemática, Física, etc.)
     const [resources] = await pool.query(
-      `SELECT ${SELECT_COLUMNS} FROM library_resources WHERE category = :category ORDER BY title`,
+      `SELECT ${SELECT_COLUMNS}
+       FROM library_resources
+       WHERE category IN (:category, 'geral')
+       ORDER BY
+         CASE
+           WHEN category = 'geral' THEN 0
+           ELSE 1
+         END,
+         title`,
       { category }
     );
 
-    // Sem recursos nessa categoria específica? Mostra pelo menos os genéricos.
-    if (resources.length === 0 && category !== 'generico') {
-      const [fallback] = await pool.query(
-        `SELECT ${SELECT_COLUMNS} FROM library_resources WHERE category = :category ORDER BY title`,
-        { category: 'generico' }
-      );
-      return res.json({ category: 'generico', resources: fallback });
-    }
+    res.json({
+      category,
+      resources
+    });
 
-    res.json({ category, resources });
   } catch (err) {
     next(err);
   }
