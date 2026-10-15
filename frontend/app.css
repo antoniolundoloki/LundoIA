@@ -2323,3 +2323,13 @@ body {
   overflow-y: hidden;
 }
 
+
+
+/* Remover a rolagem horizontal apenas no telemóvel */
+@media (max-width: 600px) {
+  html,
+  body {
+    overflow-x: hidden !important;
+    max-width: 100%;
+  }
+}
