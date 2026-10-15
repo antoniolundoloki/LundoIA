@@ -2298,3 +2298,24 @@
     padding-right: 0.5rem;
   }
 }
+
+
+
+
+
+/* LundoIA — remover scroll vertical da página de entrada */
+html,
+body {
+  min-height: 100%;
+  margin: 0;
+}
+
+body {
+  overflow-y: hidden;
+}
+
+.auth-page {
+  height: 100vh;
+  height: 100dvh;
+  overflow-y: hidden;
+}
