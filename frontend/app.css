@@ -2331,7 +2331,7 @@ body {
 /* LundoIA — painel mobile e tablet */
 @media (max-width: 1024px) {
   /* Menu e logótipo fixos no topo */
-  .sidebar,
+  .topbar-mobile,
   .sidebar-header {
     top: 12px;
   }
