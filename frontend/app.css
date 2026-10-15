@@ -2327,3 +2327,24 @@ body {
 
 
 
+
+/* LundoIA — painel mobile e tablet */
+@media (max-width: 1024px) {
+  /* Menu e logótipo fixos no topo */
+  .sidebar,
+  .sidebar-header {
+    top: 12px;
+  }
+
+  /* Ocultar a barra vertical sem desactivar a rolagem */
+  html,
+  body {
+    scrollbar-width: none;
+  }
+
+  html::-webkit-scrollbar,
+  body::-webkit-scrollbar {
+    display: none;
+    width: 0;
+  }
+}
