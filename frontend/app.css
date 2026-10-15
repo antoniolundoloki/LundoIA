@@ -2382,16 +2382,6 @@ body {
     overflow-x: clip;
     padding-bottom: 32px;
   }
-}
-
-
-
-@media (max-width: 1024px) {
-  .view[data-view="chat"] {
-    height: auto;
-    min-height: 0;
-    overflow: visible;
-  }
 
   .view[data-view="chat"] .chat-page {
     height: auto;
@@ -2399,28 +2389,104 @@ body {
     overflow: visible;
     padding-top: 12px;
   }
+}
 
-  .view[data-view="chat"] .chat-page__header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 12px;
-    width: 100%;
-    box-sizing: border-box;
-  }
 
-  .view[data-view="chat"] .chat-page__header h1 {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin: 0;
-  }
+
+
+
+
+
+
+@media (max-width: 1024px) {
+  
 
   .view[data-view="chat"] .chat-page__new {
+    display: inline-flex !important;
+    position: fixed !important;
+    right: 16px !important;
+    bottom: 90px !important;
+    top: auto !important;
+    left: auto !important;
+    z-index: 99999 !important;
+
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    width: auto;
+    min-height: 48px;
+    padding: 12px 18px;
+    border: none;
+    border-radius: 999px;
+    background: #7c3aed;
+    color: #ffffff;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+  }
+
+  
+@media (max-width: 600px) {
+  .view[data-view="chat"] .chat-page__new {
+    position: fixed !important;
+    right: 16px;
+    bottom: 100px;
+    z-index: 1200;
+
+    width: 52px;
+    height: 52px;
+    min-height: 52px;
+    padding: 0;
+    border-radius: 50%;
+
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 0;
+    gap: 0;
+  }
+
+  .view[data-view="chat"] .chat-page__new svg {
+    width: 24px;
+    height: 24px;
     flex-shrink: 0;
-    max-width: 100%;
+  }
+  
+  .view[data-view="chat"] .chat-page__new {
+    overflow: hidden;
   }
 }
 
+
+}
+
+
+
+@media (max-width: 600px) {
+  .view[data-view="chat"] .chat-page {
+    padding-bottom: 0;
+  }
+
+  .view[data-view="chat"] .chat-page__form {
+    position: fixed;
+    left: 12px;
+    right: 12px;
+    bottom: 12px;
+    z-index: 1100;
+
+    width: auto;
+    box-sizing: border-box;
+    margin: 0;
+    background: var(--background, #0b0b12);
+  }
+
+  .view[data-view="chat"] .chat-page__body {
+    padding-bottom: 120px;
+    min-height: 0;
+  }
+
+  .view[data-view="chat"] .chat-page__messages {
+    padding-bottom: 24px;
+  }
+}
 
