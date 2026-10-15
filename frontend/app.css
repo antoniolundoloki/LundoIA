@@ -2320,3 +2320,26 @@ body {
   height: 100dvh;
   overflow-y: hidden;
 }
+
+
+/* Remover rolagem horizontal */
+html,
+body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: clip;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+img,
+video,
+iframe,
+canvas {
+  max-width: 100%;
+}
+
