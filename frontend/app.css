@@ -2327,19 +2327,35 @@ body {
 
 
 
-/* LundoIA — painel mobile e tablet */
-@media (max-width: 1024px) {
-  /* Menu e logótipo fixos no topo */
 
-  /* Ocultar a barra vertical sem desactivar a rolagem */
+/* LundoIA — barra mobile fixa e conteúdo abaixo */
+@media (max-width: 1024px) {
+  .topbar-mobile {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    min-height: 64px;
+    padding: 10px 12px;
+    box-sizing: border-box;
+    z-index: 1000;
+    background: var(--background, #0b0b12);
+  }
+  .sidebar{
+    z-index: 1010;
+  }
+
+  /* Ocultar a barra de rolagem sem bloquear o movimento */
   html,
   body {
     scrollbar-width: none;
+    -ms-overflow-style: none;
   }
 
   html::-webkit-scrollbar,
   body::-webkit-scrollbar {
     display: none;
-    width: 0;
   }
 }
+
