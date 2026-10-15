@@ -2326,20 +2326,5 @@ body {
 
 html,
 body {
-  width: 100%;
-  max-width: 100%;
-  margin: 0;
-}
-
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
-img,
-video,
-iframe,
-canvas {
-  max-width: 100%;
+  overflow-x: hidden !important;
 }
