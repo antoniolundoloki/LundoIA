@@ -2357,5 +2357,31 @@ body {
   body::-webkit-scrollbar {
     display: none;
   }
+
+  main.main {
+    height: auto;
+    min-height: 0;
+    overflow: visible;
+    padding-top: 76px;
+    padding-bottom: 24px;
+    box-sizing: border-box;
+    background-color: white ;
+  }
+
+   html,
+  body {
+    height: auto !important;
+    min-height: 100% !important;
+    overflow-y: auto !important;
+    overscroll-behavior-y: auto;
+  }
+
+  main.main {
+    height: auto !important;
+    min-height: 0 !important;
+    overflow-y: visible !important;
+    overflow-x: clip;
+    padding-bottom: 32px;
+  }
 }
 
