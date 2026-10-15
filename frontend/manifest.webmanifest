@@ -1,0 +1,28 @@
+
+{
+  "id": "/",
+  "name": "LundoIA - Plataforma Educacional Inteligente",
+  "short_name": "LundoIA",
+  "description": "A tua plataforma inteligente de estudo, adaptada à realidade angolana.",
+  "lang": "pt-AO",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0b0b12",
+  "theme_color": "#0b0b12",
+  "icons": [
+    {
+      "src": "/icons/lundoia-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/lundoia-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}

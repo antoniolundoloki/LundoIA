@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <html lang="pt" class="dark">
+
+<link rel="manifest" href="/manifest.webmanifest">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,7 +10,7 @@
 <link rel="shortcut icon" href="lundoia.png" type="image/x-icon">
 <meta name="description" content="LundoIA é a assistente de estudos com inteligência artificial feita para estudantes e universitários angolanos. Respostas precisas, contextualizadas e no currículo de Angola.">
 <meta name="color-scheme" content="dark">
-<meta name="theme-color" content="#1a120c">
+<meta name="theme-color" content="#0b0b12">
 <link rel="icon" href="assets/icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="assets/apple-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -370,5 +373,29 @@
 </div>
 
 <script src="app.js"></script>
+
+
+
+<script>
+  if ("serviceWorker" in navigator) {
+    window.addEventListener("load", () => {
+      navigator.serviceWorker.register("/sw.js")
+        .then((registration) => {
+          console.log(
+            "LundoIA PWA: Service Worker registado.",
+            registration.scope
+          );
+        })
+        .catch((error) => {
+          console.error(
+            "LundoIA PWA: erro ao registar o Service Worker.",
+            error
+          );
+        });
+    });
+  }
+</script>
+
+
 </body>
 </html>
