@@ -2312,9 +2312,10 @@ body {
 
 body {
   overflow-y: hidden;
+  margin-top: -20px;
 }
-
 .auth-page {
+  margin: -500;
   height: 100vh;
   height: 100dvh;
   overflow-y: hidden;
