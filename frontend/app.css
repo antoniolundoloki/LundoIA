@@ -2315,7 +2315,6 @@ body {
 
 body {
   overflow-y: hidden;
-  margin-top: -20px;
 }
 .auth-page {
   margin: -500;
@@ -2331,10 +2330,6 @@ body {
 /* LundoIA — painel mobile e tablet */
 @media (max-width: 1024px) {
   /* Menu e logótipo fixos no topo */
-  .topbar-mobile,
-  .sidebar-header {
-    top: 12px;
-  }
 
   /* Ocultar a barra vertical sem desactivar a rolagem */
   html,
