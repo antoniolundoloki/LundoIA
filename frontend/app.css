@@ -2343,3 +2343,20 @@ canvas {
   max-width: 100%;
 }
 
+/* Corrigir o botão de autenticação Google */
+.google-btn {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  overflow: visible;
+}
+
+.google-btn img,
+.google-btn svg {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
+
