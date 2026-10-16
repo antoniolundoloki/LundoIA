@@ -1513,7 +1513,7 @@ function initGoogleAuth() {
 // backend e limpar os tokens antes de navegar.
 // ----------------------------------------------------------------------------
 function initLogout() {
-  document.querySelectorAll('a[href="entrar.html"]').forEach((link) => {
+  document.querySelectorAll('[data-logout]').forEach((link) => {
     link.addEventListener('click', (e) => {
       e.preventDefault();
       const refreshToken = getRefreshToken();
