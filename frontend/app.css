@@ -29,6 +29,18 @@
   }
 }
 
+
+/* Header fixo em todos os dispositivos */
+header.site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    box-sizing: border-box;
+}
+
+
 .auth-panel--brand {
   display: none;
   position: relative;
